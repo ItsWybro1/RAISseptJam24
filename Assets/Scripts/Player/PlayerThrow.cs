@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerThrow : MonoBehaviour
 {
-    public float max_strength, acceleration;
+    public float max_strength, acceleration, pickup_radius = 1;
 
     [SerializeField] Transform hold_point;
 
@@ -45,10 +45,15 @@ public class PlayerThrow : MonoBehaviour
         //if holding, throw
         if (is_holding)
         {
+            if(is_input_throw && !is_throwing)
+            {
+                is_throwing = true;
+            }
             //is_input_throw = tog;
         }
         else
         {
+            print("else 1");
             //if not holding, pick up or push
             //if in range to pick up, pick up
             GameObject hold;
@@ -74,10 +79,26 @@ public class PlayerThrow : MonoBehaviour
         //cooldowns
     }
 
+    public void Trip()
+    {
+        print("Trip");
+        Drop();
+    }
+
     private bool AttemptPickup(out GameObject hold)
     {
+        print("attempt pick");
         hold = null;
         //circle cast
+        Collider2D[] hits = Physics2D.OverlapCircleAll(hold_point.position, pickup_radius);
+        foreach (Collider2D hit in hits) 
+        {
+            if(hit.GetComponentInChildren<Pickable>())
+            {
+                hold = hit.gameObject;
+                return true;
+            }
+        }
 
         return false;
     }
@@ -88,7 +109,10 @@ public class PlayerThrow : MonoBehaviour
         is_holding = true;
         held = pick;
         held.transform.parent = hold_point;
-
+        held.transform.position = hold_point.position;
+        //held.transform.position = Vector2.zero;
+        pick.GetComponentInChildren<Pickable>().PickedUp(this);
+        print("pickup: " + pick.name);
         //fx
     }
 
@@ -96,14 +120,23 @@ public class PlayerThrow : MonoBehaviour
     {
         obj = null;
         //circle cast
-
+        Collider2D[] hits = Physics2D.OverlapCircleAll(hold_point.position, pickup_radius);
+        foreach (Collider2D hit in hits)
+        {
+            if (hit.GetComponentInChildren<Pushable>())
+            {
+                obj = hit.gameObject;
+                return true;
+            }
+        }
         return false;
     }
 
     private void Push(GameObject push)
     {
+        print("push");
         //push
-
+        
         //fx
     }
 
@@ -123,24 +156,27 @@ public class PlayerThrow : MonoBehaviour
     {
         if (!is_on) 
             return;
-        if (!is_throwing && is_input_throw)
+        /*if (!is_throwing && is_input_throw)
         {
             print("start throw");
             is_throwing = true;
             
             //fx
-        }
-        else if (is_throwing && is_input_throw)
+        }*/
+        //else if (is_throwing && is_input_throw)
+        if(is_holding)
+            //held.transform.localPosition = Vector2.zero;
+            held.transform.position = hold_point.position;
+        if (is_throwing && is_input_throw)
         {
             //windup
             Mathf.Clamp(cur_strength += acceleration, -max_strength, max_strength);
-
+            print("windup: " + cur_strength);
             //windup fx
         }
         else if (is_throwing && !is_input_throw)
         { 
             //throw
-            is_throwing = false;
             Throw();
         }
     }
@@ -149,7 +185,23 @@ public class PlayerThrow : MonoBehaviour
     {
         print("throw");
         //throw
+        is_holding = false;
+        is_throwing = false;
+        held.transform.parent = null;
+        ThrowInfo info = new ThrowInfo(true, hold_point.position, cur_direction, cur_strength);
+        held.GetComponentInChildren<Pickable>().LetGo(info);
+        held = null;
 
+        //fx
+    }
+
+    private void Drop()
+    {
+        print("throw");
+        //throw
+        held.transform.parent = null;
+        ThrowInfo info = new ThrowInfo(false, hold_point.position, cur_direction, cur_strength);
+        held.GetComponentInChildren<Pickable>().LetGo(info);
 
         //fx
     }
