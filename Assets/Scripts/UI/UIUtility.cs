@@ -7,18 +7,25 @@ public class UIUtility : MonoBehaviour
 {
     public GameObject uiCanvas;
     public GameObject pauseMenu;
+    private bool isPaused;
     public void Initialize()
     { 
         uiCanvas.SetActive(true);
         pauseMenu.SetActive(false);
         Time.timeScale = 1.0f;
+        isPaused = false;
     }
     public void Update()
     {
-        if(Input.GetKeyUp(KeyCode.P))
+        if(Input.GetKeyUp(KeyCode.P) && isPaused == false)
         {
             OnPausePress();
         }
+        else if (Input.GetKeyUp(KeyCode.P) && isPaused == true)
+        {
+            OnResumePress();
+        }
+
     }
     public void LoadScene(string scene)
     {
@@ -33,11 +40,13 @@ public class UIUtility : MonoBehaviour
     {
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
+        isPaused = true;
     }
     public void OnResumePress()
     {
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
+        isPaused = false;
     }
     public void QuitOutTheGame()
     {

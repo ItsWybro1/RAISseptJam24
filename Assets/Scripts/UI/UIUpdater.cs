@@ -41,7 +41,6 @@ public class UIUpdater : MonoBehaviour
     {
         p1Picture.SetActive(false);
         p1Dead.SetActive(true);
-        //p1Picture.GetComponent<Image>().color = Color.red;
     }
     public void P2Death()
     {
