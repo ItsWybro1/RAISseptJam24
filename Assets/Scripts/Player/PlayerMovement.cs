@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
         //cur_speed += acceleration;
         //step = step * cur_speed * Time.fixedDeltaTime;
         step += (Vector2)transform.position;
-        rb.MovePosition(step);
+        rb.MovePosition(step); 
     }
 
     public void Activate()
