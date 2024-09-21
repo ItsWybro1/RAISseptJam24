@@ -115,9 +115,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickup_sfx: {fileID: 0}
   land_sfx: {fileID: 0}
-  hold_cooldown: 0
+  hold_cooldown: 0.1
   weight: 1
   gravity: 10
+  landed_range: 0.1
+  min_bounce: 0.2
 --- !u!95 &2762827679821819247
 Animator:
   serializedVersion: 5

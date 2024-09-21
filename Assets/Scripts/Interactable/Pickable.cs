@@ -8,7 +8,8 @@ public class Pickable : MonoBehaviour
     [SerializeField] float hold_cooldown;
 
     private PlayerThrow holder;
-    private bool is_held, can_hold;
+    private Collider2D collider;
+    private bool is_on, is_held, can_hold;
 
     //throw
     [SerializeField] float weight = 1, gravity = 10, landed_range = 0.1f, min_bounce = 0.2f;
@@ -17,9 +18,15 @@ public class Pickable : MonoBehaviour
     private Vector2 cur_dir, cur_velocity, start_pos;
     private ThrowInfo cur_info;
 
+    private void Awake()
+    {
+        Initialize();
+        Activate();
+    }
+
     public void Initialize()
     {
-        
+        collider = GetComponentInChildren<Collider2D>();
     }
 
     public void PickedUp(PlayerThrow player)
@@ -27,6 +34,7 @@ public class Pickable : MonoBehaviour
         holder = player;
         is_held = true;
         can_hold = false;
+        collider.enabled = false;
         //fx
     }
 
@@ -90,6 +98,17 @@ public class Pickable : MonoBehaviour
     {
         yield return new WaitForSeconds(hold_cooldown);
         can_hold = true;
+        collider.enabled = false;
+    }
+
+    public void Activate()
+    {
+        is_on = true;
+    }
+
+    public void Deactivate()
+    {
+        is_on = false;
     }
 }
 
@@ -97,6 +116,7 @@ public class ThrowInfo : MonoBehaviour
 {
     public bool is_thrown;
     public Vector2 drop_pos, throw_dir, velocity;
+    public float starting_strength;
 
     public ThrowInfo(bool thr, Vector2 d, Vector2 t, Vector2 v)
     {
@@ -104,5 +124,13 @@ public class ThrowInfo : MonoBehaviour
         drop_pos = d;
         throw_dir = t;
         velocity = v;
+    }
+
+    public ThrowInfo(bool thr, Vector2 d, Vector2 t, float s)
+    {
+        is_thrown = thr;
+        drop_pos = d;
+        throw_dir = t;
+        starting_strength = s;
     }
 }
