@@ -7,9 +7,11 @@ public class PlayerInputManagerScript : MonoBehaviour
 {
     private Gamepad gamepad;
     private PlayerMovement move;
-   // private PlayerMovement move;
+    private PlayerThrow throw_script;
 
     [HideInInspector] public bool is_on;
+
+    private bool is_throwing;
 
     private void Awake()
     {
@@ -22,8 +24,10 @@ public class PlayerInputManagerScript : MonoBehaviour
         /*if (GetComponentInChildren<PlayerInput>().GetDevice<Gamepad>())
             gamepad = GetComponentInChildren<PlayerInput>().GetDevice<Gamepad>();*/
         move = GetComponentInChildren<PlayerMovement>();
+        throw_script = GetComponentInChildren<PlayerThrow>();
 
         move.Initialize();
+        throw_script.Initialize();
 
         //add gp disconecct
     }
@@ -45,14 +49,40 @@ public class PlayerInputManagerScript : MonoBehaviour
         }
     }
 
-    public void OnThrow(InputValue val)
+    public void OnThrow(/*InputAction.CallbackContext context*/)
     {
-
+        print("onthrow");
+        /*if (context.started)
+        {
+            throw_script.UpdateThrow(true);
+            UpdateThrowing(true);
+        }
+        else if (context.canceled) 
+        {
+            throw_script.UpdateThrow(false);
+            UpdateThrowing(false);
+        }*/
+        if(is_throwing)
+        {
+            UpdateThrowing(false);
+            throw_script.UpdateThrow(false);
+        }
+        else
+        {
+            UpdateThrowing(true);
+            throw_script.UpdateThrow(true);
+        }
+        
     }
 
     public void OnPush(InputValue val) 
     {
         
+    }
+
+    public void UpdateThrowing(bool tog)
+    {
+        is_throwing = tog;
     }
 
     public void Activate()

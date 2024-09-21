@@ -24,7 +24,6 @@ public class PlayerMovement : MonoBehaviour
     { 
         direction = dir;
         direction.Normalize();
-        print("update dir to " + dir);
     }
 
     public void FixedUpdate()
@@ -36,7 +35,6 @@ public class PlayerMovement : MonoBehaviour
         //cur_speed += acceleration;
         //step = step * cur_speed * Time.fixedDeltaTime;
         step += (Vector2)transform.position;
-        print("step: " + step);
         rb.MovePosition(step);
     }
 
