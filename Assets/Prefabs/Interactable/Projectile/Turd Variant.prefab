@@ -68,8 +68,53 @@ PrefabInstance:
       propertyPath: m_Name
       value: Turd Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9043916692801034332, guid: 8a6a4c39eb741934198dbd78b118e298, type: 3}
+    - {fileID: 2703699982949540268, guid: 8a6a4c39eb741934198dbd78b118e298, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7267530486465949611, guid: 8a6a4c39eb741934198dbd78b118e298, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7457830316893847625}
   m_SourcePrefab: {fileID: 100100000, guid: 8a6a4c39eb741934198dbd78b118e298, type: 3}
+--- !u!1 &7691842016361644599 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7267530486465949611, guid: 8a6a4c39eb741934198dbd78b118e298, type: 3}
+  m_PrefabInstance: {fileID: 1037408975470390684}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &7457830316893847625
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7691842016361644599}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.10942364}
+  serializedVersion: 2
+  m_Radius: 0.39057636
