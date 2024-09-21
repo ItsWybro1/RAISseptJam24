@@ -13,7 +13,13 @@ public class UIUtility : MonoBehaviour
         pauseMenu.SetActive(false);
         Time.timeScale = 1.0f;
     }
-
+    public void Update()
+    {
+        if(Input.GetKeyUp(KeyCode.P))
+        {
+            OnPausePress();
+        }
+    }
     public void LoadScene(string scene)
     {
         SceneManager.LoadScene(scene);

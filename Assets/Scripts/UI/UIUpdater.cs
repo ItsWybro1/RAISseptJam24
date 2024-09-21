@@ -7,48 +7,55 @@ using UnityEngine.UI;
 
 public class UIUpdater : MonoBehaviour
 {
-    public TextMeshProUGUI player1;
-    public TextMeshProUGUI player2;
-    public TextMeshProUGUI player3;
-    public TextMeshProUGUI player4;
-    private int P1Score;
-    private int P2Score;
-    private int P3Score;
-    private int P4Score;
+    public GameObject p1Picture;
+    public GameObject p2Picture;
+    public GameObject p3Picture;
+    public GameObject p4Picture;
+    public GameObject p1Dead;
+    public GameObject p2Dead;
+    public GameObject p3Dead;
+    public GameObject p4Dead;
     public GameManager gameManager;
     public void Start()
     {
-        P1Score = 0;
-        P2Score = 0;
-        P3Score = 0;
-        P4Score = 0;
-        UpdateScoreP1(0);
-        UpdateScoreP2(0);
-        UpdateScoreP3(0);
-        UpdateScoreP4(0);
+        p1Picture.SetActive(true);
+        p2Picture.SetActive(true);
+        p3Picture.SetActive(true);
+        p4Picture.SetActive(true);
+        p1Dead.SetActive(false);
+        p2Dead.SetActive(false);
+        p3Dead.SetActive(false);
+        p4Dead.SetActive(false);
     }
     public void Update()
     {
-
+        if (Input.GetKeyUp(KeyCode.K))
+        {
+            P1Death();
+            P2Death();
+            P3Death();
+            P4Death();
+        }
     }
-    public void UpdateScoreP1(int scoreToAdd)
+    public void P1Death()
     {
-        P1Score += scoreToAdd;
-        player1.text = "" + P1Score;
+        p1Picture.SetActive(false);
+        p1Dead.SetActive(true);
+        //p1Picture.GetComponent<Image>().color = Color.red;
     }
-    public void UpdateScoreP2(int scoreToAdd)
+    public void P2Death()
     {
-        P2Score += scoreToAdd;
-        player2.text = "" + P2Score;
+        p2Picture.SetActive(false);
+        p2Dead.SetActive(true);
     }
-    public void UpdateScoreP3(int scoreToAdd)
+    public void P3Death()
     {
-        P3Score += scoreToAdd;
-        player3.text = "" + P2Score;
+        p3Picture.SetActive(false);
+        p3Dead.SetActive(true);
     }
-    public void UpdateScoreP4(int scoreToAdd)
+    public void P4Death()
     {
-        P4Score += scoreToAdd;
-        player4.text = "" + P2Score;
+        p4Picture.SetActive(false);
+        p4Dead.SetActive(true);
     }
 }

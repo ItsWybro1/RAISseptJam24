@@ -15,5 +15,13 @@ public class MainMenu : MonoBehaviour
     {
         Application.Quit();
     }
-
+    public void OnResumePress()
+    {
+        gameObject.SetActive(false);
+        Time.timeScale = 1f;
+    }
+    public void QuitToMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
 }
