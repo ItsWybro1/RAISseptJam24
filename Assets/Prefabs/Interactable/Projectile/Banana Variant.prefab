@@ -56,6 +56,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Banana Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 8059771878762490547, guid: 93c1e637496eba94f9c093c0fa5aafa5, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: d042e8732a68eb8439b8c34a16056842, type: 2}
+    - target: {fileID: 8059771878762490547, guid: 93c1e637496eba94f9c093c0fa5aafa5, type: 3}
+      propertyPath: m_LinearDrag
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8059771878762490547, guid: 93c1e637496eba94f9c093c0fa5aafa5, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0.05
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4625356119690295315, guid: 93c1e637496eba94f9c093c0fa5aafa5, type: 3}
     - {fileID: 6667265221366274005, guid: 93c1e637496eba94f9c093c0fa5aafa5, type: 3}

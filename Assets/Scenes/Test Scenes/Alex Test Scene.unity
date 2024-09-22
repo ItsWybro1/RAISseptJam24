@@ -175,6 +175,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bomb Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 3894166923656800362, guid: 558c899220c84184cb62fbc032c3958a, type: 3}
+      propertyPath: m_LinearDrag
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
