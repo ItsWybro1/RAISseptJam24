@@ -19,6 +19,11 @@ public class UIUpdater : MonoBehaviour
     public GameObject p1, p2, p3, p4;
     public static List<GameObject> ActivePlayers = new List<GameObject>();
     public TextMeshProUGUI winText;
+
+    public void Awake()
+    {
+        Debug.Log("" + ActivePlayers.Count);
+    }
     public void Start()
     {
         p1Picture.SetActive(true);
@@ -29,22 +34,24 @@ public class UIUpdater : MonoBehaviour
         p2Dead.SetActive(false);
         p3Dead.SetActive(false);
         p4Dead.SetActive(false);
-        GameObject p1 = GameObject.Find("Player1");
+
+        //GameObject p1 = GameObject.FindWithTag("Player");
         if (p1 != null)
         {
             ActivePlayers.Add(p1);
+            Debug.Log("did the thing");
         }
-        GameObject p2 = GameObject.Find("Player2");
+        //GameObject p2 = GameObject.Find("Player2");
         if (p2 != null)
         {
             ActivePlayers.Add(p2);
         }
-        GameObject p3 = GameObject.Find("Player3");
+        //GameObject p3 = GameObject.Find("Player3");
         if (p3 != null)
         {
             ActivePlayers.Add(p3);
         }
-        GameObject p4 = GameObject.Find("Player4");
+        //GameObject p4 = GameObject.Find("Player4");
         if (p4 != null)
         {
             ActivePlayers.Add(p4);
@@ -56,8 +63,9 @@ public class UIUpdater : MonoBehaviour
         {
             P1Death();
             P2Death();
-            P3Death();
-            //P4Death();
+            //P3Death();
+            P4Death();
+            Debug.Log(""+ ActivePlayers.Count);
         }
         if(ActivePlayers.Count <= 1)
         {
@@ -73,23 +81,27 @@ public class UIUpdater : MonoBehaviour
         p1Picture.SetActive(false);
         p1Dead.SetActive(true);
         ActivePlayers.Remove(p1);
+        Debug.Log("dead1");
     }
     public void P2Death()
     {
         p2Picture.SetActive(false);
         p2Dead.SetActive(true);
         ActivePlayers.Remove(p2);
+        Debug.Log("dead2");
     }
     public void P3Death()
     {
         p3Picture.SetActive(false);
         p3Dead.SetActive(true);
         ActivePlayers.Remove(p3);
+        Debug.Log("dead3");
     }
     public void P4Death()
     {
         p4Picture.SetActive(false);
         p4Dead.SetActive(true);
         ActivePlayers.Remove(p4);
+        Debug.Log("dead4");
     }
 }
