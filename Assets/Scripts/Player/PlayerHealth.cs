@@ -22,7 +22,7 @@ public class PlayerHealth : MonoBehaviour
     }
     public void Update()
     {
-        Debug.Log(cur_health);
+        //Debug.Log(cur_health);
     }
 
     public void Damage(int d)

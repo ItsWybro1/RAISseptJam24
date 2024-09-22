@@ -87,20 +87,27 @@ public class UIUpdater : MonoBehaviour
         switch (GameManager.instance.GetPlayers().Count)
         {
             case 1:
-                GameManager.gc.ui.p1 = player.gameObject;
+                //GameManager.gc.ui.p1 = player.gameObject;
+                p1 = player.gameObject;
                 healthTest = p1.GetComponentInChildren<PlayerHealth>();
+                ActivePlayers.Add(p1);
+                print("ui p 1 assign");
                 break;
             case 2:
-                GameManager.gc.ui.p1 = player.gameObject;
-                healthTest = p2.GetComponentInChildren<PlayerHealth>();
+                p2 = player.gameObject;
+                healthTest1 = p2.GetComponentInChildren<PlayerHealth>();
+                ActivePlayers.Add(p2);
+                print("ui p 2 assign");
                 break;
             case 3:
-                GameManager.gc.ui.p1 = player.gameObject;
-                healthTest = p3.GetComponentInChildren<PlayerHealth>();
+                p3 = player.gameObject;
+                healthTest2 = p3.GetComponentInChildren<PlayerHealth>();
+                ActivePlayers.Add(p3);
                 break;
             case 4:
-                GameManager.gc.ui.p1 = player.gameObject;
-                healthTest = p4.GetComponentInChildren<PlayerHealth>();
+                p4 = player.gameObject;
+                healthTest3 = p4.GetComponentInChildren<PlayerHealth>();
+                ActivePlayers.Add(p4);
                 break;
         }
     }
@@ -137,9 +144,10 @@ public class UIUpdater : MonoBehaviour
     {
         foreach (var me in ActivePlayers)
         {
-            Debug.Log(me);
+            //Debug.Log(me);
             Debug.Log(me.name);
             //winText.text = go.name + " WINS";
+            //print("die")
             if ( healthTest && healthTest.cur_health == 0)
             {
                 Debug.Log("p1winshuzzah");
