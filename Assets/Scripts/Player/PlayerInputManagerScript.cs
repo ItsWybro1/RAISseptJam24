@@ -8,6 +8,7 @@ public class PlayerInputManagerScript : MonoBehaviour
     private Gamepad gamepad;
     private PlayerMovement move;
     private PlayerThrow throw_script;
+    private Pause pause_script;
 
     [HideInInspector] public bool is_on;
 
@@ -25,6 +26,7 @@ public class PlayerInputManagerScript : MonoBehaviour
             gamepad = GetComponentInChildren<PlayerInput>().GetDevice<Gamepad>();*/
         move = GetComponentInChildren<PlayerMovement>();
         throw_script = GetComponentInChildren<PlayerThrow>();
+        pause_script = FindAnyObjectByType<Pause>();
 
         move.Initialize();
         throw_script.Initialize();
@@ -104,5 +106,9 @@ public class PlayerInputManagerScript : MonoBehaviour
         is_on = true;
         StopCoroutine(nameof(CoMove));
         move.UpdateDirection(Vector2.zero);
+    }
+    public void OnPause()
+    {
+        pause_script.togglePause();
     }
 }

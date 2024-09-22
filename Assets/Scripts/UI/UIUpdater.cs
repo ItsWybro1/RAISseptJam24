@@ -32,7 +32,6 @@ public class UIUpdater : MonoBehaviour
         GameObject p1 = GameObject.Find("Player1");
         if (p1 != null)
         {
-            //p1 = gameObject(Player1());
             ActivePlayers.Add(p1);
         }
         GameObject p2 = GameObject.Find("Player2");
