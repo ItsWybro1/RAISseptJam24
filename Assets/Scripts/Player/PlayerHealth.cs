@@ -56,7 +56,7 @@ public class PlayerHealth : MonoBehaviour
         GetComponentInParent<PlayerHandler>().Die();
 
         //fx
-        updater.allDeath();
+        GameManager.gc.ui.allDeath();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

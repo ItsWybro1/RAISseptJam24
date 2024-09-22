@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -41,10 +42,10 @@ public class UIUpdater : MonoBehaviour
         p2wins.SetActive(false);
         p3wins.SetActive(false);
         p4wins.SetActive(false);
-        healthTest = p1.GetComponentInChildren<PlayerHealth>();
+        /*healthTest = p1.GetComponentInChildren<PlayerHealth>();
         healthTest1 = p2.GetComponentInChildren<PlayerHealth>();
         healthTest2 = p3.GetComponentInChildren<PlayerHealth>();
-        healthTest3 = p4.GetComponentInChildren<PlayerHealth>();
+        healthTest3 = p4.GetComponentInChildren<PlayerHealth>();*/
         if (p1 != null)
         {
             ActivePlayers.Add(p1);
@@ -80,6 +81,30 @@ public class UIUpdater : MonoBehaviour
             //CheckForWinner();
         }
     }
+
+    public void Join(PlayerHandler player)
+    {
+        switch (GameManager.instance.GetPlayers().Count)
+        {
+            case 1:
+                GameManager.gc.ui.p1 = player.gameObject;
+                healthTest = p1.GetComponentInChildren<PlayerHealth>();
+                break;
+            case 2:
+                GameManager.gc.ui.p1 = player.gameObject;
+                healthTest = p2.GetComponentInChildren<PlayerHealth>();
+                break;
+            case 3:
+                GameManager.gc.ui.p1 = player.gameObject;
+                healthTest = p3.GetComponentInChildren<PlayerHealth>();
+                break;
+            case 4:
+                GameManager.gc.ui.p1 = player.gameObject;
+                healthTest = p4.GetComponentInChildren<PlayerHealth>();
+                break;
+        }
+    }
+
     public void P1Death()
     {
         p1Picture.SetActive(false);
@@ -115,25 +140,25 @@ public class UIUpdater : MonoBehaviour
             Debug.Log(me);
             Debug.Log(me.name);
             //winText.text = go.name + " WINS";
-            if ( healthTest.cur_health == 0)
+            if ( healthTest && healthTest.cur_health == 0)
             {
                 Debug.Log("p1winshuzzah");
                 //p1wins.SetActive(true);
                 P1Death();
             }
-            if ( healthTest1.cur_health == 0)
+            if (healthTest1 && healthTest1.cur_health == 0)
             {
                 Debug.Log("p2winshuzzah");
                 //p2wins.SetActive(true);
                 P2Death();
             }
-            if (healthTest2.cur_health == 0)
+            if (healthTest2 && healthTest2.cur_health == 0)
             {
                 Debug.Log("p3winshuzzah");
                 //p3wins.SetActive(true);
                 P3Death();
             }
-            if (healthTest3.cur_health == 0)
+            if (healthTest3 && healthTest3.cur_health == 0)
             {
                 Debug.Log("p4winshuzzah");
                 //p4wins.SetActive(true);

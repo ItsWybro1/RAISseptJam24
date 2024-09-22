@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    public static GameController gc;
     private List<PlayerHandler> players;
 
 
@@ -25,7 +26,8 @@ public class GameManager : MonoBehaviour
             //audio
             //GetComponentInChildren<AudioManager>().Initialize();
             //game controller
-            GetComponentInChildren<GameController>().Initialize();
+            gc = GetComponentInChildren<GameController>();
+            gc.Initialize();
         }
     }
 

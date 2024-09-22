@@ -6,13 +6,16 @@ public class GameController : MonoBehaviour
 {
     [SerializeField] List<GameObject> levels;
 
-    private LobbyUIController lobby;
+    public LobbyUIController lobby;
+    public UIUpdater ui;
 
     private bool is_on, in_level, in_game;
 
     public void Initialize()
     {
         Activate();
+        ui = GameManager.instance.GetComponentInChildren<UIUpdater>();
+       // ui.Initialize();
     }
 
     public void EnterLobby()

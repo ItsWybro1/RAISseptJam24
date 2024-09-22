@@ -61,6 +61,9 @@ public class LobbyUIController : MonoBehaviour
         player.gameObject.name = "Player" + GameManager.instance.GetPlayers().Count;
         //player.GetComponentInChildren<Animator>().animato
 
+        GameManager.gc.ui.Join(player);
+        
+
         print("finish join");
         //fx
     }
