@@ -12,9 +12,12 @@ public class PlayerMovement : MonoBehaviour
     private float cur_speed;
     private bool is_on, is_stun;
 
+    private Animator playerAnim;
+
     public void Initialize()
     { 
         rb = GetComponent<Rigidbody2D>();
+        playerAnim = GetComponentInParent<PlayerHandler>().playerAnim;
 
         //debug
         Activate();
@@ -71,6 +74,14 @@ public class PlayerMovement : MonoBehaviour
         //step = step * cur_speed * Time.fixedDeltaTime;
         step += (Vector2)transform.position;
         rb.MovePosition(step); 
+
+        // ANIMATIONS
+
+        if (direction != Vector2.zero) {
+            playerAnim.SetBool("Run", true);
+        } else {
+            playerAnim.SetBool("Run", false);
+        }
     }
 
     public void Activate()

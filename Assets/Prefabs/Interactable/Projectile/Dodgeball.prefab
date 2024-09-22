@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 6443548373449195252}
   - component: {fileID: 2551094351917627007}
   - component: {fileID: 4896293471933775340}
+  - component: {fileID: 1246769308240647543}
   - component: {fileID: 6178484369004427180}
   - component: {fileID: 8093919240181046535}
   m_Layer: 0
@@ -135,10 +136,14 @@ MonoBehaviour:
   pickup_sfx: {fileID: 0}
   land_sfx: {fileID: 0}
   hold_cooldown: 0
+  hit_self_cooldown: 0.5
+  hit_any_cooldown: 0.1
+  fall_dist: 1
   weight: 1
   gravity: 10
   landed_range: 0.1
   min_bounce: 0.2
+  max_speed: 0
 --- !u!114 &4896293471933775340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,6 +156,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1027085528be882419607b4a981aacdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1246769308240647543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7124318899080854532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b2ea739e7d63894184ca9086eaee327, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage_on_contact: 0
+  damage_on_hit: 1
+  damage_on_drop: 0
+  damage: 1
 --- !u!58 &6178484369004427180
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -6,6 +6,8 @@ public class PlayerHandler : MonoBehaviour
 {
     public GameObject player_obj;
 
+    public Animator playerAnim;
+
     private bool is_on, is_dead;
 
     PlayerInputManagerScript player_input_manager;
@@ -32,7 +34,16 @@ public class PlayerHandler : MonoBehaviour
         //tell game controller
 
         //relocate
-        player_obj.transform.position = new Vector2(1000, 1000);
+        //player_obj.transform.position = new Vector2(1000, 1000);
+
+        // FX
+
+        playerAnim.SetBool("Hit", true);
+    }
+
+    public void ResetPlayer()
+    {
+        playerAnim.SetBool("Hit", false);
     }
 
     public void Activate()

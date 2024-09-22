@@ -50,6 +50,7 @@ public class PlayerHealth : MonoBehaviour
         GetComponentInParent<PlayerHandler>().Die();
 
         //fx
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
