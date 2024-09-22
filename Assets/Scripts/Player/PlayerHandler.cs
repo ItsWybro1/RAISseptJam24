@@ -14,6 +14,11 @@ public class PlayerHandler : MonoBehaviour
     PlayerHealth health;
     PlayerThrow throw_script;
 
+    private void Awake()
+    {
+        Initialize();
+    }
+
     public void Initialize()
     {
         player_input_manager = GetComponent<PlayerInputManagerScript>();
@@ -23,6 +28,13 @@ public class PlayerHandler : MonoBehaviour
         player_input_manager.Initialize();
         health.Initialize();
         throw_script.Initialize();
+
+        if (GameObject.FindGameObjectWithTag("Lobby"))
+        {
+            GameObject.FindGameObjectWithTag("Lobby").GetComponent<LobbyUIController>().PlayerJoin(this);
+        }
+        else
+            Destroy(gameObject);
     }
 
     public void Die()

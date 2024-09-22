@@ -14,14 +14,15 @@ public class PlayerInputManagerScript : MonoBehaviour
 
     private bool is_throwing;
 
-    private void Awake()
+    /*private void Awake()
     {
         Initialize();
-        Activate();
-    }
+        
+    }*/
 
     public void Initialize()
     {
+        Activate();
         /*if (GetComponentInChildren<PlayerInput>().GetDevice<Gamepad>())
             gamepad = GetComponentInChildren<PlayerInput>().GetDevice<Gamepad>();*/
         move = GetComponentInChildren<PlayerMovement>();

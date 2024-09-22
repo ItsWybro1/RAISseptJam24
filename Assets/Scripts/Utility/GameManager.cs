@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance {  get; private set; }
-
+    public static GameManager instance;
     private List<PlayerHandler> players;
 
 
     public void Awake()
     {
-        if (instance == null && instance != this)
+        if (instance != null && instance != this)
         { 
-            Destroy(this);
+            Destroy(gameObject);
         }
         else
         {
-            instance = this;
+            GameManager.instance = this;
+            DontDestroyOnLoad(gameObject);
 
             players = new List<PlayerHandler>();
 
@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
 
     public void PlayerJoin(PlayerHandler p)
     {
+        print("add player");
         players.Add(p);
     }
 
