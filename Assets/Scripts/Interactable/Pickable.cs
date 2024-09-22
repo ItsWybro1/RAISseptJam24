@@ -5,11 +5,11 @@ using UnityEngine;
 public class Pickable : MonoBehaviour
 {
     [SerializeField] AudioClip pickup_sfx, land_sfx;
-    [SerializeField] float hold_cooldown = 0.1f, hit_self_cooldown = 0.5f, fall_dist = 1f;
+    [SerializeField] float hold_cooldown = 0.1f, hit_self_cooldown = 0.5f, hit_any_cooldown = 0.1f, fall_dist = 1f;
 
     private PlayerThrow holder, thrower;
     private Collider2D collider;
-    private bool is_on, is_held, can_hold, can_hit_self;
+    private bool is_on, is_held, can_hold, can_hit_self, on_hit_cooldown;
 
     //throw
     [SerializeField] float weight = 1, gravity = 10, landed_range = 0.1f, min_bounce = 0.2f, max_speed;
@@ -18,6 +18,7 @@ public class Pickable : MonoBehaviour
     private Vector2 cur_dir, cur_velocity, start_pos;
     private ThrowInfo cur_info;
     private Rigidbody2D rb;
+    private Damaging dmg;
 
     private void Awake()
     {
@@ -29,6 +30,8 @@ public class Pickable : MonoBehaviour
     {
         collider = GetComponentInChildren<Collider2D>();
         rb = GetComponentInChildren<Rigidbody2D>();
+        if(GetComponentInChildren<Damaging>())
+            dmg = GetComponentInChildren<Damaging>();
     }
 
     public void PickedUp(PlayerThrow player)
@@ -94,8 +97,22 @@ public class Pickable : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //if(collision)
-        if(collision != thrower.GetComponentInChildren<Collision2D>())
+        if ( can_hit_self ||  !collision.gameObject.GetComponentInParent<PlayerThrow>() || (collision.gameObject.GetComponentInParent<PlayerThrow>() != thrower) )
+        {
+            if(is_thrown)
+            {
+                if (GetComponentInChildren<Damaging>() && dmg.GetDmgOnHit() && collision.gameObject.GetComponentInChildren<PlayerHealth>())
+                    HitPlayer(collision.gameObject.GetComponentInChildren<PlayerHealth>());
+                    //collision.gameObject.GetComponentInChildren<PlayerHealth>().Damage(1);
+            }
             Bounce();
+        }
+    }
+
+    private void HitPlayer(PlayerHealth player)
+    {
+        player.Damage(dmg.GetDamage());
+        //fx
     }
 
     public PlayerThrow GetHolder()
@@ -120,9 +137,17 @@ public class Pickable : MonoBehaviour
     private IEnumerator CoHitSelfCooldown()
     {
         print("start cohitself");
-        yield return new WaitForSeconds(hold_cooldown);
+        yield return new WaitForSeconds(hit_self_cooldown);
         can_hit_self = true;
         print("coolhitd now");
+    }
+
+    private IEnumerator CoHitAnyCooldown()
+    {
+        print("start cohitany");
+        yield return new WaitForSeconds(hit_any_cooldown);
+        on_hit_cooldown = false;
+        print("coolhitany now");
     }
 
     public void Activate()

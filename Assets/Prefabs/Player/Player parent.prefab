@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1031751985593404291}
   - component: {fileID: 2070733129588983054}
   - component: {fileID: 4982574597207695211}
+  - component: {fileID: 7990349660281192479}
   m_Layer: 0
   m_Name: Player parent
   m_TagString: Untagged
@@ -77,6 +78,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   is_on: 0
+--- !u!114 &7990349660281192479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5748514299833240501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a94e586ef06bc6d40a32913463469a2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player_obj: {fileID: 7438974022506119490}
 --- !u!1 &6530775024196701290
 GameObject:
   m_ObjectHideFlags: 0
@@ -103,7 +117,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.58956605, y: -0.16177909, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3590954774894666198}
@@ -119,9 +133,10 @@ GameObject:
   - component: {fileID: 3590954774894666198}
   - component: {fileID: 1257269293764470975}
   - component: {fileID: 6122800432037336893}
-  - component: {fileID: 8335382463102386906}
-  - component: {fileID: 7156616004463126018}
+  - component: {fileID: 2394371735549375029}
   - component: {fileID: 8715068811714305329}
+  - component: {fileID: 7156616004463126018}
+  - component: {fileID: 8335382463102386906}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -212,33 +227,36 @@ MonoBehaviour:
   max_speed: 5
   acceleration: 1.1
   deacceleration: 1.1
---- !u!50 &8335382463102386906
-Rigidbody2D:
-  serializedVersion: 4
+--- !u!114 &2394371735549375029
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7438974022506119490}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b6274e7279d77d4db25f047e8312385, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  max_health: 1
+  invincibility_cooldown: 0.5
+--- !u!114 &8715068811714305329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7438974022506119490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78c5abb4d61960a4d8ab85ecb6b82964, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  max_strength: 5
+  acceleration: 1.5
+  pickup_radius: 1
+  hold_point: {fileID: 1116425429130913172}
 --- !u!70 &7156616004463126018
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -274,19 +292,30 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
---- !u!114 &8715068811714305329
-MonoBehaviour:
+--- !u!50 &8335382463102386906
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7438974022506119490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78c5abb4d61960a4d8ab85ecb6b82964, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  max_strength: 5
-  acceleration: 1.5
-  pickup_radius: 1
-  hold_point: {fileID: 1116425429130913172}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4

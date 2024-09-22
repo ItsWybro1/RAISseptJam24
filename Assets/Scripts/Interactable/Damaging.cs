@@ -4,15 +4,37 @@ using UnityEngine;
 
 public class Damaging : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] bool damage_on_contact, damage_on_hit, damage_on_drop;
+    [SerializeField] int damage = 1;
+
+
+    public void Initialize()
     {
-        
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnHit(PlayerHealth player)
     {
-        
+        //fx
+    }
+
+    public int GetDamage()
+    {
+        return damage;
+    }
+
+    public bool GetDmgOnContact()
+    {
+        return damage_on_contact;
+    }
+
+    public bool GetDmgOnHit()
+    {
+        return damage_on_hit;
+    }
+
+    public bool GetDmgOnDrop()
+    {
+        return damage_on_drop;
     }
 }

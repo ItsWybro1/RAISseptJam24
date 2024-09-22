@@ -26,6 +26,7 @@ public class PlayerHealth : MonoBehaviour
             if(cur_health == 0)
             {
                 //die
+                Die();
             }
             else
             {
@@ -48,7 +49,32 @@ public class PlayerHealth : MonoBehaviour
     {
         GetComponentInParent<PlayerHandler>().Die();
 
+        print("deaded");
         //fx
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        print("detect");
+        if(collision.gameObject.GetComponentInChildren<Damaging>() && collision.gameObject.GetComponentInChildren<Damaging>().GetDmgOnContact())
+        {
+            print("oof");
+            Damaging dmg = collision.gameObject.GetComponentInChildren<Damaging>();
+            dmg.OnHit(this);
+            Damage(dmg.GetDamage());
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        print("detect");
+        if (collision.gameObject.GetComponentInChildren<Damaging>() && collision.gameObject.GetComponentInChildren<Damaging>().GetDmgOnContact())
+        {
+            print("oof");
+            Damaging dmg = collision.gameObject.GetComponentInChildren<Damaging>();
+            dmg.OnHit(this);
+            Damage(dmg.GetDamage());
+        }
     }
 
     private IEnumerator CoInvincibilityCD()

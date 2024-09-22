@@ -27,6 +27,7 @@ public class PlayerHandler : MonoBehaviour
     {
         is_dead = true;
         Deactivate();
+        player_obj.SendMessage("Deactivate", SendMessageOptions.DontRequireReceiver);
 
         //tell game controller
 
