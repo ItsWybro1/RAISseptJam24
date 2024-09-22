@@ -1163,14 +1163,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6728566615285751836, guid: 167722ab1a6cbb140afd047139966c92, type: 3}
-      propertyPath: gravity
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6728566615285751836, guid: 167722ab1a6cbb140afd047139966c92, type: 3}
-      propertyPath: fall_dist
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8225165619958801836, guid: 167722ab1a6cbb140afd047139966c92, type: 3}
       propertyPath: m_Name
       value: Test Ball

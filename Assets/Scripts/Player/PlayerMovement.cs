@@ -21,9 +21,44 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void UpdateDirection(Vector2 dir)
-    { 
+    {
+        Vector2 initial = direction;
+        float i_scale = gameObject.transform.localScale.x;
         direction = dir;
         direction.Normalize();
+
+        //00 to 10 = no; 00 -10 y; 10 00 n; 10 -10 y; -10 00 n; -10 10 y; 10 10 n; -1 -1 n;
+        /*if (dir.x != 0 && dir.x != i_scale) { }
+
+
+        if ((dir.x != initial.x) && ((i_scale != 0 && dir.x != 0 && i_scale != dir.x) ||
+            (i_scale == 0 && dir.x == -1))) { }
+
+
+        if (dir.x != 0 && ((dir.x == 1 && initial.x == -1) || (dir.x == -1 && initial.x == 1) ||
+            (i_scale == 1 && initial.x == 0 && dir.x == -1) ||
+            (i_scale == -1 && initial.x == 0 && dir.x == 1))) { }*/
+        
+        if (dir.x != 0)
+        {
+            if (dir.x > 0)
+                gameObject.transform.localScale = new Vector2(1,1);
+            else
+                gameObject.transform.localScale = new Vector2(-1, 1);
+        }
+
+        //old
+        /*if (initial.x != 0 && dir.x != 0 && initial.x != dir.x)
+            gameObject.transform.localScale *= -1;
+        else if(initial.x == 0 && dir.x != 0)
+        {
+            if(gameObject.transform.localScale.x == -1 && dir.x)
+                gameObject.transform.localScale *= -1;
+        }*/
+
+        
+
+        
     }
 
     public void FixedUpdate()

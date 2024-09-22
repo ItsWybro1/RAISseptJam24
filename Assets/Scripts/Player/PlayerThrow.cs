@@ -187,7 +187,12 @@ public class PlayerThrow : MonoBehaviour
     {
         //debug
         print("throw");
-        cur_direction = Vector2.right;
+        //cur_direction = Vector2.right;
+        /*if(transform.localScale.x == 1)
+            cur_direction = Vector2.right;
+        else
+            cur_direction = Vector2.left;*/
+        cur_direction = new Vector2(transform.localScale.x, 0);
 
         //throw
         is_holding = false;
