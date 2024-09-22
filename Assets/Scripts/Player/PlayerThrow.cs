@@ -15,6 +15,7 @@ public class PlayerThrow : MonoBehaviour
 
     private PlayerInputManagerScript player_input_manager;
 
+    private Animator playerAnim;
     
 
     private GameObject held;
@@ -22,6 +23,7 @@ public class PlayerThrow : MonoBehaviour
     public void Initialize()
     {
         player_input_manager = GetComponentInParent<PlayerInputManagerScript>();
+        playerAnim = GetComponentInParent<PlayerHandler>().playerAnim;
         
         //debug
         Activate();
@@ -117,6 +119,7 @@ public class PlayerThrow : MonoBehaviour
         pick.GetComponentInChildren<Pickable>().PickedUp(this);
         print("pickup: " + pick.name);
         //fx
+        playerAnim.SetBool("HasBall", true);
     }
 
     private bool AttemptPush(out GameObject obj)
@@ -176,6 +179,7 @@ public class PlayerThrow : MonoBehaviour
             cur_strength = Mathf.Clamp(cur_strength + acceleration, -max_strength, max_strength);
             print("windup: " + cur_strength);
             //windup fx
+            playerAnim.SetBool("Wind", true);
         }
         else if (is_throwing && !is_input_throw)
         { 
@@ -204,6 +208,9 @@ public class PlayerThrow : MonoBehaviour
         held = null;
 
         //fx
+        playerAnim.SetTrigger("Throw");
+        playerAnim.SetBool("HasBall", false);
+        playerAnim.SetBool("Wind", false);
     }
 
     private void Drop()
@@ -215,6 +222,8 @@ public class PlayerThrow : MonoBehaviour
         held.GetComponentInChildren<Pickable>().LetGo(info);
 
         //fx
+        playerAnim.SetBool("HasBall", false);
+        playerAnim.SetBool("Wind", false);
     }
 
     private IEnumerator CoCooldown(float duration)
