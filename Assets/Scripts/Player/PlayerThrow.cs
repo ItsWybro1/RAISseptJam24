@@ -189,7 +189,7 @@ public class PlayerThrow : MonoBehaviour
         is_holding = false;
         is_throwing = false;
         held.transform.parent = null;
-        ThrowInfo info = new ThrowInfo(true, hold_point.position, cur_direction, cur_strength);
+        ThrowInfo info = new ThrowInfo(true, hold_point.position, cur_direction, cur_strength, this);
         held.GetComponentInChildren<Pickable>().LetGo(info);
         held = null;
 
@@ -201,7 +201,7 @@ public class PlayerThrow : MonoBehaviour
         print("throw");
         //throw
         held.transform.parent = null;
-        ThrowInfo info = new ThrowInfo(false, hold_point.position, cur_direction, cur_strength);
+        ThrowInfo info = new ThrowInfo(false, hold_point.position, cur_direction, cur_strength, this);
         held.GetComponentInChildren<Pickable>().LetGo(info);
 
         //fx
