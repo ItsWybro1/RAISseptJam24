@@ -8,10 +8,10 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource SFX;
     [SerializeField] AudioSource Music;
     [Header("Audio Clips")]
-    [SerializeField] AudioClip[] MenuSFX; // buttons and such 
-    [SerializeField] AudioClip[] GameSFX; // ball hit sounds, and wooshes, see #1 comment below
+    [SerializeField] public AudioClip[] MenuSFX; // buttons and such 
+    [SerializeField] public AudioClip[] GameSFX; // ball hit sounds, and wooshes, see #1 comment below
     [SerializeField] AudioClip MenuMusic;
-    [SerializeField] AudioClip GameMusic;
+    [SerializeField] public AudioClip GameMusic;
     //Instances the Audiomanager
     private static AudioManager _instance;
 
@@ -45,6 +45,11 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        Music.clip = MenuMusic;
+        Music.Play();
+    }
     public void PlayMusic(AudioClip clip)
     {
         if (Music.clip != clip)
