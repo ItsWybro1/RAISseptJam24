@@ -55,6 +55,8 @@ public class Pickable : MonoBehaviour
 
         thrower = info.thrower;
 
+        rb.velocity = info.throw_dir * info.starting_strength;
+
 
         //check if thrown or dropped
         if (info.is_thrown)
@@ -76,6 +78,7 @@ public class Pickable : MonoBehaviour
         //if done bouncing, end movement
         is_thrown = false;
         cur_velocity = Vector2.zero;
+        rb.velocity = Vector2.zero;
         //fx
     }
 
@@ -83,27 +86,40 @@ public class Pickable : MonoBehaviour
     {
         if (is_thrown)
         {
-            Vector2 initial = transform.position;
+            /*Vector2 initial = transform.position;
             cur_velocity.y -= gravity;
+            //cur_velocity.x += acc;
             Vector2 step = initial + (cur_velocity * Time.fixedDeltaTime);
-            rb.MovePosition(step);
+            rb.MovePosition(step);*/
+
+            Vector2 step = new Vector2(transform.position.x, transform.position.y);
+            //step.y -= gravity * Time.fixedDeltaTime;
+            step = rb.velocity;
+            step.y -= gravity * Time.fixedDeltaTime;
+            rb.velocity = step;
+
+            //rb.MovePosition(step);
 
             //bounce
-            if(Vector2.Distance(start_pos, transform.position) > fall_dist)
+            //if(Vector2.Distance(start_pos, transform.position) > fall_dist)
+            if(Mathf.Abs(start_pos.y - transform.position.y) > fall_dist)
                 Bounce();
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        print("pick coll");
         //if(collision)
         if ( can_hit_self ||  !collision.gameObject.GetComponentInParent<PlayerThrow>() || (collision.gameObject.GetComponentInParent<PlayerThrow>() != thrower) )
         {
             if(is_thrown)
             {
                 if (GetComponentInChildren<Damaging>() && dmg.GetDmgOnHit() && collision.gameObject.GetComponentInChildren<PlayerHealth>())
+                {
                     HitPlayer(collision.gameObject.GetComponentInChildren<PlayerHealth>());
                     //collision.gameObject.GetComponentInChildren<PlayerHealth>().Damage(1);
+                }
             }
             Bounce();
         }
@@ -111,6 +127,7 @@ public class Pickable : MonoBehaviour
 
     private void HitPlayer(PlayerHealth player)
     {
+        print("ooaa gottem");
         player.Damage(dmg.GetDamage());
         //fx
     }

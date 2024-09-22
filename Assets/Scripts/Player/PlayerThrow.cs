@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerThrow : MonoBehaviour
 {
-    public float max_strength, acceleration, pickup_radius = 1;
+    public float start_strength = 1, max_strength = 5, acceleration = 1.1f, pickup_radius = 1;
 
     [SerializeField] Transform hold_point;
 
@@ -48,6 +48,7 @@ public class PlayerThrow : MonoBehaviour
             if(is_input_throw && !is_throwing)
             {
                 is_throwing = true;
+                cur_strength = start_strength;
             }
         }
         else
@@ -171,7 +172,7 @@ public class PlayerThrow : MonoBehaviour
         if (is_throwing && is_input_throw)
         {
             //windup
-            Mathf.Clamp(cur_strength += acceleration, -max_strength, max_strength);
+            cur_strength = Mathf.Clamp(cur_strength + acceleration, -max_strength, max_strength);
             print("windup: " + cur_strength);
             //windup fx
         }
@@ -184,7 +185,10 @@ public class PlayerThrow : MonoBehaviour
 
     private void Throw()
     {
+        //debug
         print("throw");
+        cur_direction = Vector2.right;
+
         //throw
         is_holding = false;
         is_throwing = false;
