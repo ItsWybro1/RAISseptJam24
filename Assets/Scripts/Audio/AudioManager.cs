@@ -80,6 +80,7 @@ public class AudioManager : MonoBehaviour
         Music.Stop();
         Music.clip = gameMusic[s];
         Music.Play();
+        s = Random.Range(0, gameMusic.Length);
         double length = (double)Music.clip.samples / Music.clip.frequency;
         Invoke(nameof(ChangeSong), (float)length);
     }
