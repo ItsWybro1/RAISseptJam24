@@ -49,6 +49,15 @@
                     "processors": "",
                     "interactions": "Hold",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "03d73c4d-a24f-4f38-9654-8af5696fd645",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -258,6 +267,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "66fff0c1-7b5f-4f2e-9bb6-c0aabbfe7c48",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
