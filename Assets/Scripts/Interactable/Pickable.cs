@@ -5,11 +5,11 @@ using UnityEngine;
 public class Pickable : MonoBehaviour
 {
     [SerializeField] AudioClip pickup_sfx, land_sfx;
-    [SerializeField] float hold_cooldown, fall_dist = 1f;
+    [SerializeField] float hold_cooldown = 0.1f, hit_self_cooldown = 0.5f, fall_dist = 1f;
 
-    private PlayerThrow holder;
+    private PlayerThrow holder, thrower;
     private Collider2D collider;
-    private bool is_on, is_held, can_hold;
+    private bool is_on, is_held, can_hold, can_hit_self;
 
     //throw
     [SerializeField] float weight = 1, gravity = 10, landed_range = 0.1f, min_bounce = 0.2f, max_speed;
@@ -44,10 +44,13 @@ public class Pickable : MonoBehaviour
     {
         is_held = false;
         is_thrown = true;
+        can_hit_self = false;
         StartCoroutine(nameof(CoHoldCooldown));
 
         cur_dir = info.throw_dir;
         cur_velocity = info.velocity;
+
+        thrower = info.thrower;
 
 
         //check if thrown or dropped
@@ -91,7 +94,8 @@ public class Pickable : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //if(collision)
-        Bounce();
+        if(collision != thrower.GetComponentInChildren<Collision2D>())
+            Bounce();
     }
 
     public PlayerThrow GetHolder()
@@ -113,6 +117,14 @@ public class Pickable : MonoBehaviour
         print("coold now");
     }
 
+    private IEnumerator CoHitSelfCooldown()
+    {
+        print("start cohitself");
+        yield return new WaitForSeconds(hold_cooldown);
+        can_hit_self = true;
+        print("coolhitd now");
+    }
+
     public void Activate()
     {
         is_on = true;
@@ -129,20 +141,23 @@ public class ThrowInfo : MonoBehaviour
     public bool is_thrown;
     public Vector2 drop_pos, throw_dir, velocity;
     public float starting_strength;
+    public PlayerThrow thrower;
 
-    public ThrowInfo(bool thr, Vector2 d, Vector2 t, Vector2 v)
+    public ThrowInfo(bool thr, Vector2 d, Vector2 t, Vector2 v, PlayerThrow p)
     {
         is_thrown = thr;
         drop_pos = d;
         throw_dir = t;
         velocity = v;
+        thrower = p;
     }
 
-    public ThrowInfo(bool thr, Vector2 d, Vector2 t, float s)
+    public ThrowInfo(bool thrown, Vector2 d, Vector2 t, float s, PlayerThrow p)
     {
-        is_thrown = thr;
+        is_thrown = thrown;
         drop_pos = d;
         throw_dir = t;
         starting_strength = s;
+        thrower = p;
     }
 }
