@@ -1,21 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.Android.LowLevel;
 
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] int max_health = 1;
     [SerializeField] float invincibility_cooldown = .5f;
 
-    private int cur_health;
+    public int cur_health;
     private bool is_on, is_invincible;
+    public UIUpdater updater;
 
     public void Initialize()
     {
         cur_health = max_health;
-
+        //updater = GetComponent<UIUpdater>();
         //debug
         Activate();
+    }
+    public void Update()
+    {
+        Debug.Log(cur_health);
     }
 
     public void Damage(int d)
@@ -45,12 +51,12 @@ public class PlayerHealth : MonoBehaviour
         //fx
     }
 
-    private void Die()
+    public void Die()
     {
         GetComponentInParent<PlayerHandler>().Die();
 
         //fx
-
+        updater.allDeath();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
