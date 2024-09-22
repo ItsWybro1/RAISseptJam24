@@ -5,18 +5,19 @@ using UnityEngine;
 public class Pickable : MonoBehaviour
 {
     [SerializeField] AudioClip pickup_sfx, land_sfx;
-    [SerializeField] float hold_cooldown;
+    [SerializeField] float hold_cooldown, fall_dist = 1f;
 
     private PlayerThrow holder;
     private Collider2D collider;
     private bool is_on, is_held, can_hold;
 
     //throw
-    [SerializeField] float weight = 1, gravity = 10, landed_range = 0.1f, min_bounce = 0.2f;
+    [SerializeField] float weight = 1, gravity = 10, landed_range = 0.1f, min_bounce = 0.2f, max_speed;
 
     private bool is_thrown;
     private Vector2 cur_dir, cur_velocity, start_pos;
     private ThrowInfo cur_info;
+    private Rigidbody2D rb;
 
     private void Awake()
     {
@@ -27,6 +28,7 @@ public class Pickable : MonoBehaviour
     public void Initialize()
     {
         collider = GetComponentInChildren<Collider2D>();
+        rb = GetComponentInChildren<Rigidbody2D>();
     }
 
     public void PickedUp(PlayerThrow player)
@@ -65,6 +67,9 @@ public class Pickable : MonoBehaviour
     {
         //udpate dir
 
+        //if done bouncing, end movement
+        is_thrown = false;
+        cur_velocity = Vector2.zero;
         //fx
     }
 
@@ -73,8 +78,13 @@ public class Pickable : MonoBehaviour
         if (is_thrown)
         {
             Vector2 initial = transform.position;
-            cur_velocity.y += gravity;
-            //Vector2 step = 
+            cur_velocity.y -= gravity;
+            Vector2 step = initial + (cur_velocity * Time.fixedDeltaTime);
+            rb.MovePosition(step);
+
+            //bounce
+            if(Vector2.Distance(start_pos, transform.position) > fall_dist)
+                Bounce();
         }
     }
 

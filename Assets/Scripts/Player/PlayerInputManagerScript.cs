@@ -58,16 +58,7 @@ public class PlayerInputManagerScript : MonoBehaviour
     public void OnThrow(/*InputAction.CallbackContext context*/)
     {
         print("onthrow");
-        /*if (context.started)
-        {
-            throw_script.UpdateThrow(true);
-            UpdateThrowing(true);
-        }
-        else if (context.canceled) 
-        {
-            throw_script.UpdateThrow(false);
-            UpdateThrowing(false);
-        }*/
+
         if(is_throwing)
         {
             UpdateThrowing(false);
@@ -78,7 +69,18 @@ public class PlayerInputManagerScript : MonoBehaviour
             UpdateThrowing(true);
             throw_script.UpdateThrow(true);
         }
-        
+
+        //old
+        /*if (context.started)
+        {
+            throw_script.UpdateThrow(true);
+            UpdateThrowing(true);
+        }
+        else if (context.canceled) 
+        {
+            throw_script.UpdateThrow(false);
+            UpdateThrowing(false);
+        }*/
     }
 
     /*public void OnPush(InputValue val) 

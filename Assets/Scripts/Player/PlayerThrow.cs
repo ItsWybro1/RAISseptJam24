@@ -35,9 +35,9 @@ public class PlayerThrow : MonoBehaviour
     public void UpdateThrow(bool tog)
     {
         print("Update Throw");
-        is_input_throw = tog;
+        //is_input_throw = tog;
         //is_input_throw = !is_input_throw;
-
+        is_input_throw = tog;
 
         //get input
 
@@ -49,10 +49,11 @@ public class PlayerThrow : MonoBehaviour
             {
                 is_throwing = true;
             }
-            //is_input_throw = tog;
         }
         else
         {
+            is_input_throw = false;
+            GetComponentInParent<PlayerInputManagerScript>().UpdateThrowing(false);
             print("else 1");
             //if not holding, pick up or push
             //if in range to pick up, pick up
