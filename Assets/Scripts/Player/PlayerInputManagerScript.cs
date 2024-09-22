@@ -47,10 +47,9 @@ public class PlayerInputManagerScript : MonoBehaviour
         {
             if(gamepad != null)
             {
-                if(is_throwing)
+                move.UpdateDirection(gamepad.leftStick.ReadValue());
+                if (is_throwing)
                     throw_script.UpdateDirection(gamepad.leftStick.ReadValue());
-                else
-                    move.UpdateDirection(gamepad.leftStick.ReadValue());
 
             }
             yield return new WaitForEndOfFrame();
@@ -65,11 +64,13 @@ public class PlayerInputManagerScript : MonoBehaviour
         {
             UpdateThrowing(false);
             throw_script.UpdateThrow(false);
+            //move.SetThrow(false);
         }
         else
         {
             UpdateThrowing(true);
             throw_script.UpdateThrow(true);
+            //move.SetThrow(true);
         }
 
         //old
@@ -93,6 +94,7 @@ public class PlayerInputManagerScript : MonoBehaviour
     public void UpdateThrowing(bool tog)
     {
         is_throwing = tog;
+        move.SetThrow(tog);
     }
 
     public void Activate()

@@ -71,8 +71,9 @@ public class Pickable : MonoBehaviour
     }
 
     //maybe do a bounce function later
-    public void Bounce()
+    public void Bounce(bool player)
     {
+        
         //udpate dir
 
         //if done bouncing, end movement
@@ -80,6 +81,14 @@ public class Pickable : MonoBehaviour
         cur_velocity = Vector2.zero;
         rb.velocity = Vector2.zero;
         //fx
+        if (player)
+        {
+            //hit player
+        }
+        else
+        {
+
+        }
     }
 
     private void FixedUpdate()
@@ -103,7 +112,7 @@ public class Pickable : MonoBehaviour
             //bounce
             //if(Vector2.Distance(start_pos, transform.position) > fall_dist)
             if(Mathf.Abs(start_pos.y - transform.position.y) > fall_dist)
-                Bounce();
+                Bounce(false);
         }
     }
 
@@ -113,15 +122,17 @@ public class Pickable : MonoBehaviour
         //if(collision)
         if ( can_hit_self ||  !collision.gameObject.GetComponentInParent<PlayerThrow>() || (collision.gameObject.GetComponentInParent<PlayerThrow>() != thrower) )
         {
+            bool player = false;
             if(is_thrown)
             {
                 if (GetComponentInChildren<Damaging>() && dmg.GetDmgOnHit() && collision.gameObject.GetComponentInChildren<PlayerHealth>())
                 {
                     HitPlayer(collision.gameObject.GetComponentInChildren<PlayerHealth>());
                     //collision.gameObject.GetComponentInChildren<PlayerHealth>().Damage(1);
+                    player = true;
                 }
             }
-            Bounce();
+            Bounce(player);
         }
     }
 
