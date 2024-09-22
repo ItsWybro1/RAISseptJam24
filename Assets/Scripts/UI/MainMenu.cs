@@ -8,8 +8,8 @@ public class MainMenu : MonoBehaviour
 {
     public void StartGame()
     {
-        AudioManager.Instance.PlayMusic(AudioManager.Instance.GameMusic);
-        AudioManager.Instance.PlaySFXoneshot(AudioManager.Instance.MenuSFX, 0);
+        AudioManager.Instance.PlayMusic(AudioManager.Instance.gameMusic);
+        AudioManager.Instance.PlaySFXArrayoneshot(AudioManager.Instance.menuSFX, 0);
         SceneManager.LoadScene(1);
     }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Pickable : MonoBehaviour
 {
-    [SerializeField] AudioClip pickup_sfx, land_sfx;
+    [SerializeField] AudioClip pickup_sfx, land_sfx, hitSurface, hitPlayer;
     [SerializeField] float hold_cooldown = 0.1f, hit_self_cooldown = 0.5f, hit_any_cooldown = 0.1f, fall_dist = 1f;
 
     private PlayerThrow holder, thrower;
@@ -83,11 +83,12 @@ public class Pickable : MonoBehaviour
         //fx
         if (player)
         {
+            AudioManager.Instance.PlaySFXoneshot(hitPlayer);
             //hit player
         }
         else
         {
-
+            AudioManager.Instance.PlaySFXoneshot(hitSurface);
         }
     }
 
