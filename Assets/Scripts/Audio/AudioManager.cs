@@ -45,6 +45,11 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        Music.clip = MenuMusic;
+        Music.Play();
+    }
     public void PlayMusic(AudioClip clip)
     {
         if (Music.clip != clip)
