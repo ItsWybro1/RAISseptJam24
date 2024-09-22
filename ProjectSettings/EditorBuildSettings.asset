@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 104bc737050059e42ad8d00a82d3a360
   - enabled: 1
+    path: Assets/Scenes/Wyatt Lobby Test Scene 1.unity
+    guid: 13a8fe75219ce784c9fb477b8284c5c2
+  - enabled: 1
     path: Assets/Scenes/Wyatt Game Test Scene 2.unity
     guid: 2ba1782f0a5abb14b804cb341523a94f
   - enabled: 1
