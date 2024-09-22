@@ -176,7 +176,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SFX: {fileID: 6944719720097064006}
   Music: {fileID: 3164612275229766265}
-  MenuSFX: []
+  MenuSFX:
+  - {fileID: 8300000, guid: afba9b42e6ff0af459cc34f8117f5bd2, type: 3}
+  - {fileID: 8300000, guid: b84087b2499458142a0600e5a0ce77b9, type: 3}
   GameSFX: []
   MenuMusic: {fileID: 8300000, guid: e833a4bb7baa8fc4bb0ee484acf4571f, type: 3}
   GameMusic: {fileID: 8300000, guid: 940278911bc9f284185039c0daa40a62, type: 3}
