@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1733964159779261070, guid: 3a52f0ca37e44464b9875707f11c93e0, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1733964159779261070, guid: 3a52f0ca37e44464b9875707f11c93e0, type: 3}
       propertyPath: m_Offset.x
@@ -39,6 +39,10 @@ PrefabInstance:
     - target: {fileID: 6435163934211622025, guid: 3a52f0ca37e44464b9875707f11c93e0, type: 3}
       propertyPath: m_Name
       value: Golf Club Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6733566097850741319, guid: 3a52f0ca37e44464b9875707f11c93e0, type: 3}
+      propertyPath: m_Constraints
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7132845089276692089, guid: 3a52f0ca37e44464b9875707f11c93e0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -149,6 +153,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.19586644, y: 0.037506282}
-  m_Size: {x: 0.14994079, y: 1.8418089}
+  m_Offset: {x: 0.102227405, y: 0.037506282}
+  m_Size: {x: 0.33721885, y: 1.8418089}
   m_Direction: 0
