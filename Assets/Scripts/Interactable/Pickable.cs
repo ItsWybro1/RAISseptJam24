@@ -106,9 +106,11 @@ public class Pickable : MonoBehaviour
 
     private IEnumerator CoHoldCooldown()
     {
+        print("start coholdcoold");
         yield return new WaitForSeconds(hold_cooldown);
         can_hold = true;
-        collider.enabled = false;
+        collider.enabled = true;
+        print("coold now");
     }
 
     public void Activate()
