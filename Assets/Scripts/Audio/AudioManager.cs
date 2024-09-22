@@ -11,7 +11,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] public AudioClip[] menuSFX; // buttons and such 
     [SerializeField] public AudioClip[] gameSFX; // ball hit sounds, and wooshes, see #1 comment below
     [SerializeField] AudioClip menuMusic;
-    [SerializeField] public AudioClip gameMusic;
+    [SerializeField] public AudioClip[] gameMusic;
+    private int s;
     //Instances the Audiomanager
     private static AudioManager _instance;
 
@@ -50,14 +51,19 @@ public class AudioManager : MonoBehaviour
         Music.clip = menuMusic;
         Music.Play();
     }
-    public void PlayMusic(AudioClip clip)
+    public void PlayMusic(AudioClip[] clip, int i)
     {
-        if (Music.clip != clip)
+        if (Music.clip != clip[i])
         {
-            Music.clip = clip;
-            Music.Stop();
+            Music.Stop(); 
+            Music.clip = clip[i];
             Music.Play();
+            s = Random.Range(0, gameMusic.Length);
+            double length = (double)clip[i].samples / clip[i].frequency;
+            Invoke(nameof(ChangeSong), (float)length);
         }
+        
+        //StartCoroutine(); to call playmusic with reandom int
     }
     public void PlaySFXArrayoneshot(AudioClip[] clip, int i)
     {
@@ -67,5 +73,15 @@ public class AudioManager : MonoBehaviour
     public void PlaySFXoneshot(AudioClip clip)
     {
         SFX.PlayOneShot(clip);
+    }
+    public void ChangeSong()
+    {
+        Debug.Log("changeSong");
+        Music.Stop();
+        Music.clip = gameMusic[s];
+        Music.Play();
+        s = Random.Range(0, gameMusic.Length);
+        double length = (double)Music.clip.samples / Music.clip.frequency;
+        Invoke(nameof(ChangeSong), (float)length);
     }
 }

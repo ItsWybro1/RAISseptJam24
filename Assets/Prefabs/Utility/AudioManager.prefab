@@ -176,12 +176,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SFX: {fileID: 6944719720097064006}
   Music: {fileID: 3164612275229766265}
-  MenuSFX:
+  menuSFX:
   - {fileID: 8300000, guid: afba9b42e6ff0af459cc34f8117f5bd2, type: 3}
   - {fileID: 8300000, guid: b84087b2499458142a0600e5a0ce77b9, type: 3}
-  GameSFX: []
-  MenuMusic: {fileID: 8300000, guid: e833a4bb7baa8fc4bb0ee484acf4571f, type: 3}
-  GameMusic: {fileID: 8300000, guid: 940278911bc9f284185039c0daa40a62, type: 3}
+  gameSFX: []
+  menuMusic: {fileID: 8300000, guid: e833a4bb7baa8fc4bb0ee484acf4571f, type: 3}
+  gameMusic:
+  - {fileID: 8300000, guid: 940278911bc9f284185039c0daa40a62, type: 3}
+  - {fileID: 8300000, guid: 23a11deb7c800964593df23071e8c6f8, type: 3}
+  - {fileID: 8300000, guid: b8a780e2afc542945a7e3e57790d7cd1, type: 3}
+  - {fileID: 8300000, guid: 234993ef1af74de4c81bed7d34f55157, type: 3}
 --- !u!1 &9156970998473325909
 GameObject:
   m_ObjectHideFlags: 0
