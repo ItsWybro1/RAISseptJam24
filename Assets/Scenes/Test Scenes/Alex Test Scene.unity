@@ -635,6 +635,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player parent
       objectReference: {fileID: 0}
+    - target: {fileID: 5748514299833240501, guid: 25720aff839068b4497665f658cb46f5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6530775024196701290, guid: 25720aff839068b4497665f658cb46f5, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 8348375941799395594, guid: 25720aff839068b4497665f658cb46f5, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 0c83ba9253b6dad4aafdee6320ae7d2a, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

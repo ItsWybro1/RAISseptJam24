@@ -16,6 +16,14 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 300
       objectReference: {fileID: 0}
+    - target: {fileID: 3053385998799705606, guid: 93c1e637496eba94f9c093c0fa5aafa5, type: 3}
+      propertyPath: hold_cooldown
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3053385998799705606, guid: 93c1e637496eba94f9c093c0fa5aafa5, type: 3}
+      propertyPath: hit_self_cooldown
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5788416019834445453, guid: 93c1e637496eba94f9c093c0fa5aafa5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -70,7 +78,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8059771878762490547, guid: 93c1e637496eba94f9c093c0fa5aafa5, type: 3}
       propertyPath: m_AngularDrag
-      value: 0.05
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8059771878762490547, guid: 93c1e637496eba94f9c093c0fa5aafa5, type: 3}
       propertyPath: m_Constraints
