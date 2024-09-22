@@ -253,9 +253,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c5abb4d61960a4d8ab85ecb6b82964, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  max_strength: 5
+  max_strength: 15
   acceleration: 1.5
-  pickup_radius: 1
+  pickup_radius: 1.5
   hold_point: {fileID: 1116425429130913172}
 --- !u!70 &7156616004463126018
 CapsuleCollider2D:
