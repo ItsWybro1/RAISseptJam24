@@ -135,8 +135,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickup_sfx: {fileID: 0}
   land_sfx: {fileID: 0}
-  hitSurface: {fileID: 0}
-  hitPlayer: {fileID: 0}
+  hitSurface: {fileID: 8300000, guid: bda4648645ab545498ee870743051942, type: 3}
+  hitPlayer: {fileID: 8300000, guid: a143f006252381e4795964b2652a497a, type: 3}
   hold_cooldown: 0.1
   hit_self_cooldown: 1
   hit_any_cooldown: 0.1
