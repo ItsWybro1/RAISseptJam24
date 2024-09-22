@@ -100,8 +100,11 @@ public class PlayerThrow : MonoBehaviour
         {
             if(hit.GetComponentInChildren<Pickable>())
             {
-                hold = hit.gameObject;
-                return true;
+                if (hit.GetComponentInChildren<Pickable>().GetIsHeld() == false) {
+                    hold = hit.gameObject;
+                    return true;
+                }
+                
             }
         }
 
