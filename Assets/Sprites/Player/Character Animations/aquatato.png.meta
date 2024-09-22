@@ -635,7 +635,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aquatato_ballrun_09
+      name: aquatato_idleball_01
       rect:
         serializedVersion: 2
         x: 0
@@ -656,7 +656,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: aquatato_ballrun_10
+      name: aquatato_idleball_02
       rect:
         serializedVersion: 2
         x: 69
@@ -758,14 +758,14 @@ TextureImporter:
       aquatato_ballrun_06: 913755564
       aquatato_ballrun_07: -955610369
       aquatato_ballrun_08: 1394586561
-      aquatato_ballrun_09: 1618670863
-      aquatato_ballrun_10: -166403814
       aquatato_hit_01: 1236404226
       aquatato_hit_02: -829619675
       aquatato_hit_03: 415339164
       aquatato_idle_01: 423141339
       aquatato_idle_02: -478929757
       aquatato_idle_03: 917252231
+      aquatato_idleball_01: 1618670863
+      aquatato_idleball_02: -166403814
       aquatato_run_01: 259768007
       aquatato_run_02: -1881212297
       aquatato_run_03: 699930420

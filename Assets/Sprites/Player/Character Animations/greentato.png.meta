@@ -635,7 +635,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: greentato_ballrun_09
+      name: greentato_idleball_01
       rect:
         serializedVersion: 2
         x: 0
@@ -656,7 +656,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: greentato_ballrun_10
+      name: greentato_idleball_02
       rect:
         serializedVersion: 2
         x: 69
@@ -758,14 +758,14 @@ TextureImporter:
       greentato_ballrun_06: 1237520965
       greentato_ballrun_07: 1043500264
       greentato_ballrun_08: 250885645
-      greentato_ballrun_09: -596950999
-      greentato_ballrun_10: 930954784
       greentato_hit_01: 786325943
       greentato_hit_02: 209782539
       greentato_hit_03: -1644219720
       greentato_idle_01: 211255616
       greentato_idle_02: 86052920
       greentato_idle_03: 1389978580
+      greentato_idleball_01: -596950999
+      greentato_idleball_02: 930954784
       greentato_run_01: 1831706563
       greentato_run_02: -1516860023
       greentato_run_03: 2076190188
