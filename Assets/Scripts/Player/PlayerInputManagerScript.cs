@@ -65,11 +65,13 @@ public class PlayerInputManagerScript : MonoBehaviour
         {
             UpdateThrowing(false);
             throw_script.UpdateThrow(false);
+            //move.SetThrow(false);
         }
         else
         {
             UpdateThrowing(true);
             throw_script.UpdateThrow(true);
+            //move.SetThrow(true);
         }
 
         //old

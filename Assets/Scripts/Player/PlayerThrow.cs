@@ -29,7 +29,8 @@ public class PlayerThrow : MonoBehaviour
 
     public void UpdateDirection(Vector2 direction)
     { 
-        
+        cur_direction = direction;
+        cur_direction.Normalize();
     }
 
     public void UpdateThrow(bool tog)
@@ -192,7 +193,7 @@ public class PlayerThrow : MonoBehaviour
             cur_direction = Vector2.right;
         else
             cur_direction = Vector2.left;*/
-        cur_direction = new Vector2(transform.localScale.x, 0);
+        //cur_direction = new Vector2(transform.localScale.x, 0);
 
         //throw
         is_holding = false;

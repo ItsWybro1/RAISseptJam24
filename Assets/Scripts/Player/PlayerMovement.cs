@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 direction;
     private Rigidbody2D rb;
     private float cur_speed;
-    private bool is_on, is_stun;
+    private bool is_on, is_stun, is_throw;
 
     private Animator playerAnim;
 
@@ -68,20 +68,29 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!is_on || is_stun)
             return;
-        Vector2 step = direction * max_speed * Time.fixedDeltaTime;
-        //step.Normalize();
-        //cur_speed += acceleration;
-        //step = step * cur_speed * Time.fixedDeltaTime;
-        step += (Vector2)transform.position;
-        rb.MovePosition(step); 
+        if(!is_throw)
+        {
+            Vector2 step = direction * max_speed * Time.fixedDeltaTime;
+            //step.Normalize();
+            //cur_speed += acceleration;
+            //step = step * cur_speed * Time.fixedDeltaTime;
+            step += (Vector2)transform.position;
+            rb.MovePosition(step);
+        }
+        
 
         // ANIMATIONS
 
-        if (direction != Vector2.zero) {
+        if (direction != Vector2.zero && !is_throw) {
             playerAnim.SetBool("Run", true);
         } else {
             playerAnim.SetBool("Run", false);
         }
+    }
+
+    public void SetThrow(bool tog)
+    {
+        is_throw = tog;
     }
 
     public void Activate()
