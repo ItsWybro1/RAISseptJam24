@@ -15,6 +15,8 @@ public class GameController : MonoBehaviour
     {
         Activate();
         ui = GameManager.instance.GetComponentInChildren<UIUpdater>();
+        //debug
+        StartGame();
        // ui.Initialize();
     }
 
@@ -23,6 +25,10 @@ public class GameController : MonoBehaviour
         lobby = GameObject.FindGameObjectWithTag("Lobby").GetComponent<LobbyUIController>();
 
         lobby.EnterLobby();
+
+        //spawn level
+        GameObject l = Instantiate(levels[0]);
+        l.GetComponent<Level>().Initialize();
     }
 
     public void ExitLobby()
@@ -39,6 +45,7 @@ public class GameController : MonoBehaviour
     private IEnumerator CoGameplay()
     {
         //   ExitLobby();
+        EnterLobby();
 
         while(in_game)
         {

@@ -16,7 +16,7 @@ public class LobbyUIController : MonoBehaviour
     //test
     private void Awake()
     {
-        Initialize();
+        //Initialize();
     }
 
     public void Initialize()
@@ -27,6 +27,7 @@ public class LobbyUIController : MonoBehaviour
 
     public void EnterLobby()
     {
+        Activate();
         print("Enter loobyy");
         can_join = true;
     }
