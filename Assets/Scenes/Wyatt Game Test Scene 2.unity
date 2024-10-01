@@ -470,6 +470,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wyatt Test Level
       objectReference: {fileID: 0}
+    - target: {fileID: 5745863408021411983, guid: 1809679e9bf93724c9f9eb89a33fd60b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

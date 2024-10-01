@@ -9,19 +9,29 @@ public class GameController : MonoBehaviour
     public LobbyUIController lobby;
     public UIUpdater ui;
 
+    public Level level;
+    public MinigameController level_controller;
+
     private bool is_on, in_level, in_game;
 
     public void Initialize()
     {
         Activate();
         ui = GameManager.instance.GetComponentInChildren<UIUpdater>();
-       // ui.Initialize();
+        level = GetComponentInChildren<Level>();
+        level_controller = GetComponentInChildren<MinigameController>();
+        // ui.Initialize();
+
+        //testing lobby
+        EnterLobby();
     }
 
     public void EnterLobby()
     {
         lobby = GameObject.FindGameObjectWithTag("Lobby").GetComponent<LobbyUIController>();
 
+        level.Initialize();
+        level_controller.EnterLobby();
         lobby.EnterLobby();
     }
 
