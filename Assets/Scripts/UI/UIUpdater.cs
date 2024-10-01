@@ -181,6 +181,8 @@ public class UIUpdater : MonoBehaviour
             Debug.Log(go);
             Debug.Log(go.name);
             //winText.text = go.name + " WINS";
+
+            bool end = true;
             if (go.name == "Player")
             {
                 Debug.Log("p1winshuzzah");
@@ -200,6 +202,13 @@ public class UIUpdater : MonoBehaviour
             {
                 Debug.Log("p4winshuzzah");
                 p4wins.SetActive(true);
+            }
+            else
+                end = false;
+
+            if (end) 
+            {
+                GameManager.gc.LevelEnd();
             }
         }
     }

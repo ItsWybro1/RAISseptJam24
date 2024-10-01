@@ -6,6 +6,8 @@ public class GameController : MonoBehaviour
 {
     [SerializeField] List<GameObject> levels;
 
+    [SerializeField] float level_end_duration = 3.5f;
+
     public LobbyUIController lobby;
     public UIUpdater ui;
 
@@ -59,7 +61,15 @@ public class GameController : MonoBehaviour
                 yield return new WaitForEndOfFrame();
             }
 
+            yield return new WaitForSeconds(level_end_duration);
+
             //despawn level
+            //reset players
+            foreach (PlayerHandler p in GameManager.instance.GetPlayers()) 
+            {
+                p.ResetPlayer();
+            }
+            level.Initialize();
         }
 
         //back to main

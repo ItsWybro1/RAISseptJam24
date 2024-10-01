@@ -56,6 +56,7 @@ public class PlayerHandler : MonoBehaviour
     public void ResetPlayer()
     {
         playerAnim.SetBool("Hit", false);
+        is_dead = false;
     }
 
     public void Activate()
