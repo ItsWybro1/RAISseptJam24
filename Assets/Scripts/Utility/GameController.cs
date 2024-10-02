@@ -74,7 +74,8 @@ public class GameController : MonoBehaviour
             {
                 p.ResetPlayer();
             }
-            level.Initialize();
+
+            //start new level  
         }
         //gameover
         EndGame();
@@ -88,7 +89,9 @@ public class GameController : MonoBehaviour
         //spawn level
         //initialize level
         //start game
+        level.Initialize();
         ui.LevelStart();
+
     }
 
     /*private IEnumerator CoCreateLEvel()
