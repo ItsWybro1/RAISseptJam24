@@ -28,11 +28,13 @@ public class UIUpdater : MonoBehaviour
 
     public void Awake()
     {
-        Debug.Log("" + ActivePlayers.Count);
+        
     }
 
     public void Initialize()
     {
+        Debug.Log("" + ActivePlayers.Count);
+
         p1Picture.SetActive(true);
         p2Picture.SetActive(true);
         p3Picture.SetActive(true);
@@ -68,10 +70,10 @@ public class UIUpdater : MonoBehaviour
         }
     }
 
-    public void Start()
+    /*public void Start()
     {
         Initialize();
-    }
+    }*/
     public void Update()
     {
         if (Input.GetKeyUp(KeyCode.K))

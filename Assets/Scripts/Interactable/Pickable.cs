@@ -58,6 +58,10 @@ public class Pickable : MonoBehaviour
 
         rb.velocity = info.throw_dir * info.starting_strength;
 
+        print("letgo cur dir: " + cur_dir);
+        print("letgo rb cur velocity: " + cur_velocity);
+        print("letgo rb velovicity: " + rb.velocity);
+
 
         //check if thrown or dropped
         if (info.is_thrown)
@@ -74,7 +78,7 @@ public class Pickable : MonoBehaviour
     //maybe do a bounce function later
     public void Bounce(bool player)
     {
-        
+        print("bounce");
         //udpate dir
 
         //if done bouncing, end movement
@@ -109,12 +113,18 @@ public class Pickable : MonoBehaviour
             step.y -= gravity * Time.fixedDeltaTime;
             rb.velocity = step;
 
+            print("new step: " + step);
+            print("new velocity: " + rb.velocity);
+
             //rb.MovePosition(step);
 
             //bounce
             //if(Vector2.Distance(start_pos, transform.position) > fall_dist)
-            if(Mathf.Abs(start_pos.y - transform.position.y) > fall_dist)
+            if (Mathf.Abs(start_pos.y - transform.position.y) > fall_dist)
+            {
+                print("reach dist");
                 Bounce(false);
+            }
         }
     }
 
