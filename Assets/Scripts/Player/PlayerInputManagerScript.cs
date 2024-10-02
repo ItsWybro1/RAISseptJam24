@@ -39,7 +39,7 @@ public class PlayerInputManagerScript : MonoBehaviour
     { 
         move.UpdateDirection(val.Get<Vector2>());
         //move.UpdateDirection((Vector2)val.Get<Vector3>());
-        print("onmove");
+        //print("onmove");
     }
 
     public IEnumerator CoMove()

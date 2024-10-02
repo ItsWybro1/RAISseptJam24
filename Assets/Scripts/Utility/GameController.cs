@@ -22,7 +22,7 @@ public class GameController : MonoBehaviour
         ui = GameManager.instance.GetComponentInChildren<UIUpdater>();
         level = GetComponentInChildren<Level>();
         level_controller = GetComponentInChildren<MinigameController>();
-        // ui.Initialize();
+        ui.Initialize();
 
         //testing lobby
         EnterLobby();
@@ -89,6 +89,7 @@ public class GameController : MonoBehaviour
         //spawn level
         //initialize level
         //start game
+        ui.Initialize();
         level.Initialize();
         ui.LevelStart();
 

@@ -49,6 +49,7 @@ public class Pickable : MonoBehaviour
         is_thrown = true;
         can_hit_self = false;
         StartCoroutine(nameof(CoHoldCooldown));
+        StartCoroutine(nameof(CoHitAnyCooldown));
 
         cur_dir = info.throw_dir;
         cur_velocity = info.velocity;
@@ -159,24 +160,34 @@ public class Pickable : MonoBehaviour
         print("start coholdcoold");
         yield return new WaitForSeconds(hold_cooldown);
         can_hold = true;
-        collider.enabled = true;
-        print("coold now");
+        if (!is_held)
+        {
+            //collider.enabled = true;
+            print("coold now");
+        }       
     }
 
     private IEnumerator CoHitSelfCooldown()
     {
         print("start cohitself");
         yield return new WaitForSeconds(hit_self_cooldown);
-        can_hit_self = true;
-        print("coolhitd now");
+        if (!is_held)
+        {
+            can_hit_self = true;
+            print("coolhitd now");
+        }       
     }
 
     private IEnumerator CoHitAnyCooldown()
     {
         print("start cohitany");
         yield return new WaitForSeconds(hit_any_cooldown);
-        on_hit_cooldown = false;
-        print("coolhitany now");
+        if (!is_held)
+        {
+            on_hit_cooldown = false;
+            collider.enabled = true;
+            print("coolhitany now");
+        }
     }
 
     public void Activate()

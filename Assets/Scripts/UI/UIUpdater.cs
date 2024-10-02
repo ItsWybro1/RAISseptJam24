@@ -33,11 +33,6 @@ public class UIUpdater : MonoBehaviour
 
     public void Initialize()
     {
-        
-    }
-
-    public void Start()
-    {
         p1Picture.SetActive(true);
         p2Picture.SetActive(true);
         p3Picture.SetActive(true);
@@ -71,6 +66,11 @@ public class UIUpdater : MonoBehaviour
         {
             ActivePlayers.Add(p4);
         }
+    }
+
+    public void Start()
+    {
+        Initialize();
     }
     public void Update()
     {
@@ -186,8 +186,8 @@ public class UIUpdater : MonoBehaviour
     {
         foreach (var go in ActivePlayers)
         {
-            Debug.Log(go);
-            Debug.Log(go.name);
+            //Debug.Log(go);
+            //Debug.Log(go.name);
             //winText.text = go.name + " WINS";
 
             bool end = true;
@@ -224,7 +224,7 @@ public class UIUpdater : MonoBehaviour
     }
     public IEnumerator WinThing()
     {
-        Debug.Log("Question");
+        //Debug.Log("Question");
         CheckForWinner();
         yield return new WaitForSeconds(5);
     }

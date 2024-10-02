@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
             //GetComponentInChildren<AudioManager>().Initialize();
             //game controller
             gc = GetComponentInChildren<GameController>();
-            gc.Initialize();
+            gc.ui.Initialize();
         }
     }
 
