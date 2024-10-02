@@ -114,8 +114,8 @@ public class Pickable : MonoBehaviour
             step.y -= gravity * Time.fixedDeltaTime;
             rb.velocity = step;
 
-            print("new step: " + step);
-            print("new velocity: " + rb.velocity);
+            //print("new step: " + step);
+            //print("new velocity: " + rb.velocity);
 
             //rb.MovePosition(step);
 
@@ -123,7 +123,7 @@ public class Pickable : MonoBehaviour
             //if(Vector2.Distance(start_pos, transform.position) > fall_dist)
             if (Mathf.Abs(start_pos.y - transform.position.y) > fall_dist)
             {
-                print("reach dist");
+                //print("reach dist");
                 Bounce(false);
             }
         }

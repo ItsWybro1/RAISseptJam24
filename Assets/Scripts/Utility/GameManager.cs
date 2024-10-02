@@ -50,4 +50,14 @@ public class GameManager : MonoBehaviour
 
         //later add loop to iterate through players to readjust any UI and other info
     }
+
+    public void Update()
+    {
+        //debug 
+        //restart
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            gc.LevelEnd();
+        }
+    }
 }

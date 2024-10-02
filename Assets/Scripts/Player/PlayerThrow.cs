@@ -220,6 +220,11 @@ public class PlayerThrow : MonoBehaviour
     {
         print("throw");
         //throw
+        if (held == null)
+            return;
+        
+        print(held);
+        print(held.transform);
         held.transform.parent = null;
         ThrowInfo info = new ThrowInfo(false, hold_point.position, cur_direction, cur_strength, this);
         held.GetComponentInChildren<Pickable>().LetGo(info);
