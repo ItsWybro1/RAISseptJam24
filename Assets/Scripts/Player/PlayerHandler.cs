@@ -40,6 +40,7 @@ public class PlayerHandler : MonoBehaviour
     public void Die()
     {
         is_dead = true;
+        throw_script.Die();
         Deactivate();
         player_obj.SendMessage("Deactivate", SendMessageOptions.DontRequireReceiver);
 

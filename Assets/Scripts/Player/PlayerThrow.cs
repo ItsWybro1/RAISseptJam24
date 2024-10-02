@@ -235,6 +235,11 @@ public class PlayerThrow : MonoBehaviour
         //end cooldown
     }
 
+    public void Die()
+    {
+        Drop();
+    }
+
     public void Activate()
     {
         is_on = true;
