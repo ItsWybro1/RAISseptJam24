@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Wyatt Game Test Scene 2.unity
     guid: 2ba1782f0a5abb14b804cb341523a94f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Test Scenes/Wyatt Test Scene 1.unity
     guid: 7fc0201d5222d024aa1ba06a444edd7c
   m_configObjects: {}
