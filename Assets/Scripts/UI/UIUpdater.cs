@@ -24,10 +24,18 @@ public class UIUpdater : MonoBehaviour
     public GameObject p1wins,p2wins,p3wins,p4wins;
     public PlayerHealth healthTest, healthTest1, healthTest2, healthTest3;
 
+    private bool is_win;
+
     public void Awake()
     {
         Debug.Log("" + ActivePlayers.Count);
     }
+
+    public void Initialize()
+    {
+        
+    }
+
     public void Start()
     {
         p1Picture.SetActive(true);
@@ -72,11 +80,11 @@ public class UIUpdater : MonoBehaviour
             P2Death();
             //P3Death();
             P4Death();
-            Debug.Log(""+ ActivePlayers.Count);
+            //Debug.Log(""+ ActivePlayers.Count);
         }
-        if(ActivePlayers.Count <= 1)
+        if(ActivePlayers.Count <= 1 && !is_win)
         {
-            Debug.Log("its triggering");
+            //Debug.Log("its triggering");
             StartCoroutine(WinThing());
             //CheckForWinner();
         }
@@ -208,6 +216,8 @@ public class UIUpdater : MonoBehaviour
 
             if (end) 
             {
+                print("end == true");
+                LevelEnd();
                 GameManager.gc.LevelEnd();
             }
         }
@@ -218,4 +228,51 @@ public class UIUpdater : MonoBehaviour
         CheckForWinner();
         yield return new WaitForSeconds(5);
     }
+    //private void Win(int winner) 
+    private void Win(string winner) 
+    {
+
+
+        /*if (winner.name == "Player")
+        {
+            Debug.Log("p1winshuzzah");
+            p1wins.SetActive(true);
+        }
+        else if (winner.name == "Player2")
+        {
+            Debug.Log("p2winshuzzah");
+            p2wins.SetActive(true);
+        }
+        else if (winner.name == "Player3")
+        {
+            Debug.Log("p3winshuzzah");
+            p3wins.SetActive(true);
+        }
+        else if (winner.name == "Player4")
+        {
+            Debug.Log("p4winshuzzah");
+            p4wins.SetActive(true);
+        }
+        else //tie
+            end = false;*/
+    }
+
+    private void LevelEnd()
+    {
+        is_win = true;
+    }
+
+    private void GameEnd()
+    { 
+        
+    }
+
+    public void LevelStart()
+    {
+        is_win = false;
+    }
+
+    public void EnterLobby() { }
+
+    public void ExitLobby() { }
 }

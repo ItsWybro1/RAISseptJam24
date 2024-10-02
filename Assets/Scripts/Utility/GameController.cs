@@ -35,6 +35,7 @@ public class GameController : MonoBehaviour
         level.Initialize();
         level_controller.EnterLobby();
         lobby.EnterLobby();
+        StartGame();
     }
 
     public void ExitLobby()
@@ -55,12 +56,16 @@ public class GameController : MonoBehaviour
         while(in_game)
         {
             // spawn level
+            in_level = true;
+            CreateLevel();
 
+            //lvl gameplay
             while (in_level)
             {
                 yield return new WaitForEndOfFrame();
             }
-
+            //lvl end
+            print("level end");
             yield return new WaitForSeconds(level_end_duration);
 
             //despawn level
@@ -71,8 +76,11 @@ public class GameController : MonoBehaviour
             }
             level.Initialize();
         }
+        //gameover
+        EndGame();
 
-        //back to main
+
+        //back to main?
     }
 
     private void CreateLevel()
@@ -80,10 +88,17 @@ public class GameController : MonoBehaviour
         //spawn level
         //initialize level
         //start game
+        ui.LevelStart();
     }
+
+    /*private IEnumerator CoCreateLEvel()
+    { 
+        
+    }*/
 
     public void LevelEnd()
     {
+        print("LEvelEnd");
         in_level = false;
     }
 
