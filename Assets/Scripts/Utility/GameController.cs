@@ -73,6 +73,7 @@ public class GameController : MonoBehaviour
             foreach (PlayerHandler p in GameManager.instance.GetPlayers()) 
             {
                 p.ResetPlayer();
+                p.BroadcastMessage("Activate", SendMessageOptions.DontRequireReceiver);
             }
 
             //start new level  

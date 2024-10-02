@@ -57,6 +57,12 @@ public class PlayerHandler : MonoBehaviour
     {
         playerAnim.SetBool("Hit", false);
         is_dead = false;
+        //Activate();
+    }
+
+    public void Spawn()
+    { 
+    
     }
 
     public void Activate()

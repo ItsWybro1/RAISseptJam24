@@ -53,6 +53,7 @@ public class Pickable : MonoBehaviour
 
         cur_dir = info.throw_dir;
         cur_velocity = info.velocity;
+        start_pos = info.drop_pos;
 
         thrower = info.thrower;
 
