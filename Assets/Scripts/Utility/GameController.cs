@@ -24,14 +24,15 @@ public class GameController : MonoBehaviour
         level_controller = GetComponentInChildren<MinigameController>();
         ui.Initialize();
 
+        lobby = GameObject.FindGameObjectWithTag("Lobby").GetComponent<LobbyUIController>();
+        lobby.Initialize();
+
         //testing lobby
-        EnterLobby();
+        //EnterLobby();
     }
 
     public void EnterLobby()
     {
-        lobby = GameObject.FindGameObjectWithTag("Lobby").GetComponent<LobbyUIController>();
-
         level.Initialize();
         level_controller.EnterLobby();
         lobby.EnterLobby();
@@ -45,6 +46,7 @@ public class GameController : MonoBehaviour
 
     public void StartGame()
     {
+        print("start game");
         in_game = true;
         StartCoroutine(nameof(CoGameplay));
     }
@@ -60,6 +62,7 @@ public class GameController : MonoBehaviour
             CreateLevel();
 
             //lvl gameplay
+            print("start level");
             while (in_level)
             {
                 yield return new WaitForEndOfFrame();

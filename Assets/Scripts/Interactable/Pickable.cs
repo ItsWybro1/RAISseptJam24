@@ -13,6 +13,7 @@ public class Pickable : MonoBehaviour
 
     //throw
     [SerializeField] float weight = 1, gravity = 10, landed_range = 0.1f, min_bounce = 0.2f, max_speed;
+    [SerializeField] bool can_bounce = true;
 
     private bool is_thrown;
     private Vector2 cur_dir, cur_velocity, start_pos;
@@ -83,9 +84,23 @@ public class Pickable : MonoBehaviour
         //udpate dir
 
         //if done bouncing, end movement
+        if (can_bounce)
+        {
+        }
+        else { }
+
+        //for now, no bouncing
         is_thrown = false;
         cur_velocity = Vector2.zero;
         rb.velocity = Vector2.zero;
+
+        //fragile
+        if (GetComponentInChildren<Fragile>())
+        { 
+            // do fragile things
+        }
+
+
         //fx
         if (player)
         {

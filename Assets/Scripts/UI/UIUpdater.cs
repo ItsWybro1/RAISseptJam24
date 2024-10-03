@@ -152,7 +152,34 @@ public class UIUpdater : MonoBehaviour
     }
     public void allDeath()
     {
-        foreach (var me in ActivePlayers)
+        if (ActivePlayers.Count < 1)
+            return;
+
+        if (healthTest && healthTest.cur_health == 0)
+        {
+            Debug.Log("p1winshuzzah");
+            //p1wins.SetActive(true);
+            P1Death();
+        }
+        if (healthTest1 && healthTest1.cur_health == 0)
+        {
+            Debug.Log("p2winshuzzah");
+            //p2wins.SetActive(true);
+            P2Death();
+        }
+        if (healthTest2 && healthTest2.cur_health == 0)
+        {
+            Debug.Log("p3winshuzzah");
+            //p3wins.SetActive(true);
+            P3Death();
+        }
+        if (healthTest3 && healthTest3.cur_health == 0)
+        {
+            Debug.Log("p4winshuzzah");
+            //p4wins.SetActive(true);
+            P4Death();
+        }
+        /*foreach (var me in ActivePlayers)
         {
             //Debug.Log(me);
             Debug.Log(me.name);
@@ -182,7 +209,7 @@ public class UIUpdater : MonoBehaviour
                 //p4wins.SetActive(true);
                 P4Death();
             }
-        }
+        }*/
     }
     public void CheckForWinner()
     {

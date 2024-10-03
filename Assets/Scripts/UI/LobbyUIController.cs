@@ -14,15 +14,15 @@ public class LobbyUIController : MonoBehaviour
     private bool is_on, can_join;
 
     //test
-    private void Awake()
+    /*private void Awake()
     {
         Initialize();
-    }
+    }*/
 
     public void Initialize()
     {
         Activate();
-        EnterLobby();
+        GameManager.gc .EnterLobby();
     }
 
     public void EnterLobby()
