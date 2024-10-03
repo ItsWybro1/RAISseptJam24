@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class Fragile : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] bool on_bounce, on_hit, on_throw;
+
+    public bool GetBounce()
     {
-        
+        return on_bounce;
     }
 
-    // Update is called once per frame
-    void Update()
+    public bool GetHit()
     {
-        
+        return on_hit;
+    }
+
+    public bool GetThrow()
+    {
+        return on_throw;
     }
 }

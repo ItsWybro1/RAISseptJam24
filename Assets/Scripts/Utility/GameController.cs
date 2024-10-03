@@ -73,11 +73,7 @@ public class GameController : MonoBehaviour
 
             //despawn level
             //reset players
-            foreach (PlayerHandler p in GameManager.instance.GetPlayers()) 
-            {
-                p.ResetPlayer();
-                p.BroadcastMessage("Activate", SendMessageOptions.DontRequireReceiver);
-            }
+            ResetPlayers();
 
             //start new level  
         }
@@ -86,6 +82,15 @@ public class GameController : MonoBehaviour
 
 
         //back to main?
+    }
+
+    private void ResetPlayers()
+    {
+        foreach (PlayerHandler p in GameManager.instance.GetPlayers())
+        {
+            p.ResetPlayer();
+            p.BroadcastMessage("Activate", SendMessageOptions.DontRequireReceiver);
+        }
     }
 
     private void CreateLevel()

@@ -13,7 +13,8 @@ public class Damaging : MonoBehaviour
 
     }
 
-    public void OnHit(PlayerHealth player)
+    //public void OnHit(PlayerHealth player)
+    public void OnHit(Health player)
     {
         //fx
     }

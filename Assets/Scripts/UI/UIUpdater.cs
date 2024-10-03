@@ -19,7 +19,7 @@ public class UIUpdater : MonoBehaviour
     public GameObject p4Dead;
     public GameManager gameManager;
     public GameObject p1, p2, p3, p4;
-    public static List<GameObject> ActivePlayers = new List<GameObject>();
+    public static List<GameObject> ActivePlayers;
     public TextMeshProUGUI winText;
     public GameObject p1wins,p2wins,p3wins,p4wins;
     public PlayerHealth healthTest, healthTest1, healthTest2, healthTest3;
@@ -33,8 +33,6 @@ public class UIUpdater : MonoBehaviour
 
     public void Initialize()
     {
-        Debug.Log("" + ActivePlayers.Count);
-
         p1Picture.SetActive(true);
         p2Picture.SetActive(true);
         p3Picture.SetActive(true);
@@ -51,10 +49,11 @@ public class UIUpdater : MonoBehaviour
         healthTest1 = p2.GetComponentInChildren<PlayerHealth>();
         healthTest2 = p3.GetComponentInChildren<PlayerHealth>();
         healthTest3 = p4.GetComponentInChildren<PlayerHealth>();*/
+        ActivePlayers = new List<GameObject>();
         if (p1 != null)
         {
             ActivePlayers.Add(p1);
-            Debug.Log("did the thing");
+            //Debug.Log("did the thing");
         }
         if (p2 != null)
         {
@@ -70,10 +69,6 @@ public class UIUpdater : MonoBehaviour
         }
     }
 
-    /*public void Start()
-    {
-        Initialize();
-    }*/
     public void Update()
     {
         if (Input.GetKeyUp(KeyCode.K))

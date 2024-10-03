@@ -52,9 +52,9 @@ public class Level : MonoBehaviour
         {
             foreach (GameObject s in spawned)
             {
-                Destroy(s);
-                spawned.Remove(s);
+                Destroy(s);            
             }
+            spawned.Clear();
         }
     }
         

@@ -22,7 +22,7 @@ public class LobbyUIController : MonoBehaviour
     public void Initialize()
     {
         Activate();
-        GameManager.gc .EnterLobby();
+        GameManager.gc.EnterLobby();
     }
 
     public void EnterLobby()

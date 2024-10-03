@@ -4,28 +4,18 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 //using UnityEngine.InputSystem.Android.LowLevel;
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealth : Health
 {
-    [SerializeField] int max_health = 1;
-    [SerializeField] float invincibility_cooldown = .5f;
 
-    public int cur_health;
-    private bool is_on, is_invincible;
-    public UIUpdater updater;
-
-    public void Initialize()
+    /*public void Initialize()
     {
         cur_health = max_health;
         //updater = GetComponent<UIUpdater>();
         //debug
         Activate();
-    }
-    public void Update()
-    {
-        //Debug.Log(cur_health);
-    }
+    }*/
 
-    public void Damage(int d)
+    /*public void Damage(int d)
     {
         if(!is_invincible)
         {
@@ -42,17 +32,17 @@ public class PlayerHealth : MonoBehaviour
                 //damage fx
             }
         }
-    }
+    }*/
 
     //I dont thnik we'll heal, but just for later/in case
-    public void Heal(int h)
+    /*public void Heal(int h)
     { 
         cur_health = Mathf.Clamp(cur_health + h, cur_health, max_health); 
 
         //fx
-    }
+    }*/
 
-    public void Die()
+    public override void Die()
     {
         GetComponentInParent<PlayerHandler>().Die();
 
@@ -60,7 +50,7 @@ public class PlayerHealth : MonoBehaviour
         GameManager.gc.ui.allDeath();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    /*private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.GetComponentInChildren<Damaging>() && collision.gameObject.GetComponentInChildren<Damaging>().GetDmgOnContact())
         {
@@ -95,4 +85,5 @@ public class PlayerHealth : MonoBehaviour
     {
         is_on = false;
     }
+    */
 }
