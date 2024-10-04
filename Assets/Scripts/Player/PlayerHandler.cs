@@ -56,9 +56,17 @@ public class PlayerHandler : MonoBehaviour
 
     public void ResetPlayer()
     {
-        playerAnim.SetBool("Hit", false);
         is_dead = false;
         //Activate();
+
+        //reset move
+
+        //reset throw
+        throw_script.ResetPlayer();
+
+        //fx
+        playerAnim.SetBool("Hit", false);
+
     }
 
     public void Spawn()

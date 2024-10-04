@@ -219,6 +219,8 @@ public class PlayerThrow : MonoBehaviour
     private void Drop()
     {
         print("throw");
+        is_holding = false;
+        is_throwing = false;
         //throw
         if (held == null)
             return;
@@ -241,6 +243,11 @@ public class PlayerThrow : MonoBehaviour
     }
 
     public void Die()
+    {
+        Drop();
+    }
+
+    public void ResetPlayer()
     {
         Drop();
     }

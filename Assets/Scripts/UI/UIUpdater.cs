@@ -24,6 +24,8 @@ public class UIUpdater : MonoBehaviour
     public GameObject p1wins,p2wins,p3wins,p4wins;
     public PlayerHealth healthTest, healthTest1, healthTest2, healthTest3;
 
+    public List<Sprite> empty_players, alive_players, dead_players, win_players;
+
     private bool is_win;
 
     public void Awake()
@@ -54,6 +56,7 @@ public class UIUpdater : MonoBehaviour
         {
             ActivePlayers.Add(p1);
             //Debug.Log("did the thing");
+            //p1Picture.sprite = alive_players[0];
         }
         if (p2 != null)
         {

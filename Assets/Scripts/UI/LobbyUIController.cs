@@ -59,7 +59,9 @@ public class LobbyUIController : MonoBehaviour
         //decorate player
 
         player.gameObject.name = "Player" + GameManager.instance.GetPlayers().Count;
-        //player.GetComponentInChildren<Animator>().animato
+        //player.GetComponentInChildren<Animator>().animator;
+
+        GameManager.gc.level.LobbyPlayerSpawn(player);
 
         GameManager.gc.ui.Join(player);
         
