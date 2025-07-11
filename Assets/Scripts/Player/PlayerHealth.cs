@@ -27,7 +27,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void Damage(int d)
     {
-        if(!is_invincible)
+        if(is_on && !is_invincible)
         {
             cur_health = Mathf.Clamp(cur_health - d, 0, cur_health);
             if(cur_health == 0)
@@ -55,6 +55,7 @@ public class PlayerHealth : MonoBehaviour
     public void Die()
     {
         GetComponentInParent<PlayerHandler>().Die();
+        Deactivate();
 
         //fx
         GameManager.gc.ui.allDeath();

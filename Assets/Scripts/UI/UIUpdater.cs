@@ -24,7 +24,7 @@ public class UIUpdater : MonoBehaviour
     public GameObject p1wins,p2wins,p3wins,p4wins;
     public PlayerHealth healthTest, healthTest1, healthTest2, healthTest3;
 
-    private bool is_win;
+    private bool is_win, has_started;
 
     public void Awake()
     {
@@ -33,6 +33,7 @@ public class UIUpdater : MonoBehaviour
 
     public void Initialize()
     {
+        print("reach UI innitialize");
         Debug.Log("" + ActivePlayers.Count);
 
         p1Picture.SetActive(true);
@@ -51,6 +52,7 @@ public class UIUpdater : MonoBehaviour
         healthTest1 = p2.GetComponentInChildren<PlayerHealth>();
         healthTest2 = p3.GetComponentInChildren<PlayerHealth>();
         healthTest3 = p4.GetComponentInChildren<PlayerHealth>();*/
+        ActivePlayers = new List<GameObject>();
         if (p1 != null)
         {
             ActivePlayers.Add(p1);
@@ -68,6 +70,7 @@ public class UIUpdater : MonoBehaviour
         {
             ActivePlayers.Add(p4);
         }
+        print("player count is now: " + ActivePlayers.Count);
     }
 
     /*public void Start()
@@ -84,7 +87,9 @@ public class UIUpdater : MonoBehaviour
             P4Death();
             //Debug.Log(""+ ActivePlayers.Count);
         }
-        if(ActivePlayers.Count <= 1 && !is_win)
+        if (ActivePlayers.Count > 1 && !has_started)
+            has_started = true;
+        if(ActivePlayers.Count <= 1 && !is_win && has_started)
         {
             //Debug.Log("its triggering");
             StartCoroutine(WinThing());
@@ -152,40 +157,44 @@ public class UIUpdater : MonoBehaviour
     }
     public void allDeath()
     {
-        foreach (var me in ActivePlayers)
-        {
+        List<GameObject> players = new List<GameObject>(ActivePlayers);
+        //foreach (var me in players)
+        //foreach (var me in ActivePlayers)
+        //{
             //Debug.Log(me);
-            Debug.Log(me.name);
+            //Debug.Log(me.name);
             //winText.text = go.name + " WINS";
             //print("die")
             if ( healthTest && healthTest.cur_health == 0)
             {
-                Debug.Log("p1winshuzzah");
+                Debug.Log("p1dies");
                 //p1wins.SetActive(true);
                 P1Death();
             }
             if (healthTest1 && healthTest1.cur_health == 0)
             {
-                Debug.Log("p2winshuzzah");
+                Debug.Log("p2dies");
                 //p2wins.SetActive(true);
                 P2Death();
             }
             if (healthTest2 && healthTest2.cur_health == 0)
             {
-                Debug.Log("p3winshuzzah");
+                Debug.Log("p3dies");
                 //p3wins.SetActive(true);
                 P3Death();
             }
             if (healthTest3 && healthTest3.cur_health == 0)
             {
-                Debug.Log("p4winshuzzah");
+                Debug.Log("p4dies");
                 //p4wins.SetActive(true);
                 P4Death();
             }
-        }
+        //}
+        print("active players after death: " + ActivePlayers.Count);
     }
     public void CheckForWinner()
     {
+        print("reach winner check");
         foreach (var go in ActivePlayers)
         {
             //Debug.Log(go);
@@ -193,7 +202,7 @@ public class UIUpdater : MonoBehaviour
             //winText.text = go.name + " WINS";
 
             bool end = true;
-            if (go.name == "Player")
+            if (go.name == "Player1")
             {
                 Debug.Log("p1winshuzzah");
                 p1wins.SetActive(true);
@@ -272,6 +281,12 @@ public class UIUpdater : MonoBehaviour
     public void LevelStart()
     {
         is_win = false;
+        foreach (GameObject p in UIUpdater.ActivePlayers)
+        {
+            p.SendMessage("Activate");
+            if (p != null && p.GetComponent<PlayerHealth>())
+                p.GetComponent<PlayerHealth>().Heal(1);
+        }
     }
 
     public void EnterLobby() { }

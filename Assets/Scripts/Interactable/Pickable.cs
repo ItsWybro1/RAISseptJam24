@@ -79,7 +79,7 @@ public class Pickable : MonoBehaviour
     //maybe do a bounce function later
     public void Bounce(bool player)
     {
-        print("bounce");
+        //print("bounce");
         //udpate dir
 
         //if done bouncing, end movement
@@ -131,7 +131,7 @@ public class Pickable : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        print("pick coll");
+        //print("pick coll");
         //if(collision)
         if ( can_hit_self ||  !collision.gameObject.GetComponentInParent<PlayerThrow>() || (collision.gameObject.GetComponentInParent<PlayerThrow>() != thrower) )
         {
@@ -180,24 +180,24 @@ public class Pickable : MonoBehaviour
 
     private IEnumerator CoHitSelfCooldown()
     {
-        print("start cohitself");
+        //print("start cohitself");
         yield return new WaitForSeconds(hit_self_cooldown);
         if (!is_held)
         {
             can_hit_self = true;
-            print("coolhitd now");
+            //print("coolhitd now");
         }       
     }
 
     private IEnumerator CoHitAnyCooldown()
     {
-        print("start cohitany");
+        //print("start cohitany");
         yield return new WaitForSeconds(hit_any_cooldown);
         if (!is_held)
         {
             on_hit_cooldown = false;
             collider.enabled = true;
-            print("coolhitany now");
+            //print("coolhitany now");
         }
     }
 

@@ -37,7 +37,7 @@ public class PlayerThrow : MonoBehaviour
 
     public void UpdateThrow(bool tog)
     {
-        print("Update Throw");
+        //print("Update Throw");
         //is_input_throw = tog;
         //is_input_throw = !is_input_throw;
         is_input_throw = tog;
@@ -58,7 +58,7 @@ public class PlayerThrow : MonoBehaviour
         {
             is_input_throw = false;
             GetComponentInParent<PlayerInputManagerScript>().UpdateThrowing(false);
-            print("else 1");
+            //print("else 1");
             //if not holding, pick up or push
             //if in range to pick up, pick up
             GameObject hold;
@@ -86,13 +86,13 @@ public class PlayerThrow : MonoBehaviour
 
     public void Trip()
     {
-        print("Trip");
+        //print("Trip");
         Drop();
     }
 
     private bool AttemptPickup(out GameObject hold)
     {
-        print("attempt pick");
+        //print("attempt pick");
         hold = null;
         //circle cast
         Collider2D[] hits = Physics2D.OverlapCircleAll(hold_point.position, pickup_radius);
@@ -120,7 +120,7 @@ public class PlayerThrow : MonoBehaviour
         held.transform.position = hold_point.position;
         //held.transform.position = Vector2.zero;
         pick.GetComponentInChildren<Pickable>().PickedUp(this);
-        print("pickup: " + pick.name);
+        //print("pickup: " + pick.name);
         //fx
         playerAnim.SetBool("HasBall", true);
     }
@@ -180,7 +180,7 @@ public class PlayerThrow : MonoBehaviour
         {
             //windup
             cur_strength = Mathf.Clamp(cur_strength + acceleration, -max_strength, max_strength);
-            print("windup: " + cur_strength);
+            //print("windup: " + cur_strength);
             //windup fx
             playerAnim.SetBool("Wind", true);
         }
@@ -194,7 +194,7 @@ public class PlayerThrow : MonoBehaviour
     private void Throw()
     {
         //debug
-        print("throw");
+        //print("throw");
         //cur_direction = Vector2.right;
         if(transform.localScale.x == 1)
             cur_direction = Vector2.right;
@@ -218,7 +218,7 @@ public class PlayerThrow : MonoBehaviour
 
     private void Drop()
     {
-        print("throw");
+        //print("throw");
         //throw
         if (held == null)
             return;

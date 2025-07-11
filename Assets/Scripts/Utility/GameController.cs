@@ -87,13 +87,14 @@ public class GameController : MonoBehaviour
 
     private void CreateLevel()
     {
+        print("reach create level");
         //spawn level
         //initialize level
         //start game
         ui.Initialize();
         level.Initialize();
         ui.LevelStart();
-
+        
     }
 
     /*private IEnumerator CoCreateLEvel()

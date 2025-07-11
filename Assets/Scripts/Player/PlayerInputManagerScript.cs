@@ -59,7 +59,7 @@ public class PlayerInputManagerScript : MonoBehaviour
 
     public void OnThrow(/*InputAction.CallbackContext context*/)
     {
-        print("onthrow");
+        //print("onthrow");
 
         if(is_throwing)
         {

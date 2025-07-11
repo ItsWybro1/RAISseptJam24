@@ -34,6 +34,8 @@ public class Level : MonoBehaviour
 
         GameObject hazard1 = Instantiate(hazards[Random.Range(0, hazards.Count)], hazardSpawn1);
         GameObject hazard2 = Instantiate(hazards[Random.Range(0, hazards.Count)], hazardSpawn2);
+
+        //setup players?
     }
 
     public void ResetLevel()
